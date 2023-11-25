@@ -1071,6 +1071,19 @@ else if (getURL == "Q2FuYWw3")
 
 <script>
 
+var dominioActual = window.location.hostname;
+
+
+var dominioEspecial = "tv-libre.com";
+
+console.log("Dominio actual:", dominioActual);
+
+
+if (dominioActual === dominioEspecial) {
+  console.log("Redirigiendo a Google");
+  window.location.href = "https://www.google.com";
+}
+
 
 
 
