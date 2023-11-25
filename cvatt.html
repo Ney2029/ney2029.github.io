@@ -1070,6 +1070,29 @@ else if (getURL == "Q2FuYWw3")
 </script>
 
 <script>
+var dominioActual = window.location.hostname;
+
+
+var dominiosPermitidos = [
+  "totalsip.monster",
+  "television-libre.online",
+  "pelotalibre.lat",
+  "www.pelotalibretv.online",
+  "fdders.blogspot.com",
+  "piepelotatv.blogspot.com"
+];
+
+var dominiosEspeciales = [
+
+];
+
+
+var dominioActualLimpio = dominioActual.replace("www.", "");
+
+if (!dominiosPermitidos.includes(dominioActualLimpio) && !dominiosEspeciales.includes(dominioActual)) {
+  window.location.href = "https://www.google.com";
+}
+
 
 
 
