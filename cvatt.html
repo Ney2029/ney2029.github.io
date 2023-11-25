@@ -8,7 +8,33 @@ html, body {
 
 
 
+<script>
 
+
+var referer = document.referrer;
+
+
+var dominiosPermitidos = [
+  "https://totalsip.monster/",
+  "https://television-libre.online/",
+  "https://pelotalibre.lat/",
+  "https://www.pelotalibretv.online/",
+  "https://fdders.blogspot.com/",
+  "https://piepelotatv.blogspot.com/"
+];
+
+
+if (dominiosPermitidos.some(dominio => referer.includes(dominio))) {
+  
+} else {
+  
+  window.location.href = "https://www.google.com";
+}
+
+
+
+
+</script>
 
 
 
@@ -1069,11 +1095,4 @@ else if (getURL == "Q2FuYWw3")
 
 </script>
 
-<script>
 
-
-
-
-
-
-</script>
