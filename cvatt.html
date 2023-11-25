@@ -1072,9 +1072,8 @@ else if (getURL == "Q2FuYWw3")
 <script>
 var dominioActual = window.location.hostname;
 
-
-var dominiosPermitidos = [
-  "https://totalsip.monster/",
+var dominiosEspeciales = [
+   "https://totalsip.monster/",
   "https://television-libre.online/",
   "https://pelotalibre.lat/",
   "https://www.pelotalibretv.online/",
@@ -1082,11 +1081,9 @@ var dominiosPermitidos = [
   "https://piepelotatv.blogspot.com/"
 ];
 
-
-if (dominiosPermitidos.includes(dominioActual)) {
-
-} else {
- 
+if (!dominiosEspeciales.includes(dominioActual)) {
   window.location.href = "https://www.google.com";
 }
+
+
 </script>
