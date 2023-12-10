@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+  <title>Feliz Navidad</title>
+  <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
+  </head>
+<body>
+  <div id="player"></div>
+
+  <script>
+    let token = "eyJ0eXAiOiJKV1QiLCJraWQiOiJ3VTNpZklJYUxPVUFSZVJCL0ZHNmVNMVAxUU09IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiNW9mQnBjbUxNcGlsV0d6dWZJamtidyIsInN1YiI6ImhhaWVrLXZhcmVsYUBhcm5ldC5jb20uYXIiLCJidXNpbmVzc1VuaXQiOiJTU0xBLURUSCIsInJlZ2lvbnMiOlsiODBiYjA2MTAtZmVhOS0xMWVhLWExOTAtMGIwZDc4ZDkyOTY2IiwiZjkxN2NmZjYtMDI1YS00OTE3LTg0ZDYtZmI2ODY2OTdkOTNjIiwiMmUxNjcyMzctYzdiYi00MjNiLWI2MDYtYzMxMTE1YWRiMWRhIl0sImF1ZGl0VHJhY2tpbmdJZCI6ImM1ZTJjZDdmLTE0MDItNDg0NS1hY2Y0LTQ2MTNjYTZlYzhiYS00MjQyMjU2NiIsImlzbzJDb2RlIjoiQVIiLCJpc3MiOiJodHRwczovL3Byb2Ryb2NrLmRpcmVjdHZnby5jb206NDQzL29wZW5hbS9vYXV0aDIvcmVhbG1zL3Jvb3QvcmVhbG1zL3NzbGEiLCJ0b2tlbk5hbWUiOiJpZF90b2tlbiIsImRldmljZUlkIjoiRXVrcXJjLTFuWmtmZUxLUVI5THZ4ZU5RbTRBQmpxdURqd0ZSdC1tbGtMdyIsImN1c3RvbWVyU3RhdHVzIjoiQWN0aXZlIiwiYXpwIjoiZHR2Z28iLCJmYW1pbHlOYW1lIjoiVkFSRUxBIiwiYXV0aF90aW1lIjoxNzAxOTE4NjE5LCJjdXN0b21lcklkIjoiMzQ2NDAiLCJleHAiOjE3MDIwODQyMjIsImlhdCI6MTcwMTkxODYyMiwiY3VzdG9tZXJTdGF0dXNNZXNzYWdlIjoiMTAwMSIsImlic0FjY291bnRTdGF0dXMiOiJBQ1RJVkUiLCJnaXZlbk5hbWUiOiJIQUlERUUiLCJ2cmlvRGV2aWNlSWQiOiI5MzZmOTliMS03MDliLTQwOGItYjI4YS02ZTYxOGUxMDI4YmUiLCJhdWQiOiJkdHZnbyIsImNoYW5uZWxzIjpbIkNIMDEwMDAwMDAwMDAxOSIsIkNIMDEwMDAwMDAwMDE2NyIsIkNIMDEwMDAwMDAwMDE5NSIsIkNIMDEwMDAwMDAwMDA3NiIsIkNIMDEwMDAwMDAwMDEwNyIsIkNIMDEwMDAwMDAwMDIwMiIsIkNIMDEwMDAwMDAwMDAyNiIsIkNIMDEwMDAwMDAwMDE1MSIsIkNIMDEwMDAwMDAwMDIxNiIsIkNIMDEwMDAwMDAwMDIwOSIsIkNIMDEwMDAwMDAwMDA3NSIsIkNIMDEwMDAwMDAwMDI5NSIsIkNIMDEwMDAwMDAwMDI5MyIsIkNIMDEwMDAwMDAwMDAzOSIsIkNIMDEwMDAwMDAwMDA4NyIsIkNIMDEwMDAwMDAwMDIyOSIsIkNIMDEwMDAwMDAwMDAxOCIsIkNIMDEwMDAwMDAwMDA2OCIsIkNIMDEwMDAwMDAwMDAyMCIsIkNIMDEwMDAwMDAwMDAxNSIsIkNIMDEwMDAwMDAwMDE0MiIsIkNIMDEwMDAwMDAwMDE0MCIsIkNIMDEwMDAwMDAwMDE3MSIsIkNIMDEwMDAwMDAwMDExNyIsIkNIMDEwMDAwMDAwMDA0NiIsIkNIMDEwMDAwMDAwMDIzNSIsIkNIMDEwMDAwMDAwMDI4NiIsIkNIMDEwMDAwMDAwMDIzMCIsIkNIMDEwMDAwMDAwMDI5MiIsIkNIMDEwMDAwMDAwMDA1MSIsIkNIMDEwMDAwMDAwMDEzOSIsIkNIMDEwMDAwMDAwMDA1MCIsIkNIMDEwMDAwMDAwMDA3NCIsIkNIMDEwMDAwMDAwMDAxNiIsIkNIMDEwMDAwMDAwMDE2MyIsIkNIMDEwMDAwMDAwMDAxMCIsIkNIMDEwMDAwMDAwMDAzNiIsIkNIMDEwMDAwMDAwMDAxNyIsIkNIMDEwMDAwMDAwMDIxNCIsIkNIMDEwMDAwMDAwMDE2MiIsIkNIMDEwMDAwMDAwMDE3NyIsIkNIMDEwMDAwMDAwMDA4MCIsIkNIMDEwMDAwMDAwMDA2NCIsIkNIMDEwMDAwMDAwMDA5NCIsIkNIMDEwMDAwMDAwMDA4NiIsIkNIMDEwMDAwMDAwMDEwNCIsIkNIMDEwMDAwMDAwMDE0OCIsIkNIMDEwMDAwMDAwMDExNiIsIkNIMDEwMDAwMDAwMDE4NiIsIkNIMDEwMDAwMDAwMDIxNSIsIkNIMDEwMDAwMDAwMDIyMyIsIkNIMDEwMDAwMDAwMDIyNSIsIkNIMDEwMDAwMDAwMDI0NyIsIkNIMDEwMDAwMDAwMDI0OSIsIkNIMDEwMDAwMDAwMDI1OSIsIkNIMDEwMDAwMDAwMDE5NiIsIkNIMDEwMDAwMDAwMDIwMSIsIkNIMDEwMDAwMDAwMDAyMSIsIkNIMDEwMDAwMDAwMDEyOCIsIkNIMDEwMDAwMDAwMDE5NyIsIkNIMDEwMDAwMDAwMDAzNyIsIkNIMDEwMDAwMDAwMDIzNiIsIkNIMDEwMDAwMDAwMDI0NiIsIkNIMDEwMDAwMDAwMDAzMCIsIkNIMDEwMDAwMDAwMDE0NiIsIkNIMDEwMDAwMDAwMDE1MiIsIkNIMDEwMDAwMDAwMDE1NSIsIkNIMDEwMDAwMDAwMDExNSIsIkNIMDEwMDAwMDAwMDAzMSIsIkNIMDEwMDAwMDAwMDE5NCIsIkNIMDEwMDAwMDAwMDIxMSIsIkNIMDEwMDAwMDAwMDI2MyIsIkNIMDEwMDAwMDAwMDA5OCIsIkNIMDEwMDAwMDAwMDIwNyIsIkNIMDEwMDAwMDAwMDA1MyIsIkNIMDEwMDAwMDAwMDA0NCIsIkNIMDEwMDAwMDAwMDA0MCIsIkNIMDEwMDAwMDAwMDE4MiIsIkNIMDEwMDAwMDAwMDA0OCIsIkNIMDEwMDAwMDAwMDIwNSIsIkNIMDEwMDAwMDAwMDA1MiIsIkNIMDEwMDAwMDAwMDA5MyIsIkNIMDEwMDAwMDAwMDIyMiIsIkNIMDEwMDAwMDAwMDA3MCIsIkNIMDEwMDAwMDAwMDIzOSIsIkNIMDEwMDAwMDAwMDA3MSIsIkNIMDEwMDAwMDAwMDA4OSIsIkNIMDEwMDAwMDAwMDE5MyIsIkNIMDEwMDAwMDAwMDA5MiIsIkNIMDEwMDAwMDAwMDEwNiIsIkNIMDEwMDAwMDAwMDExMSIsIkNIMDEwMDAwMDAwMDExMiIsIkNIMDEwMDAwMDAwMDMwMiIsIkNIMDEwMDAwMDAwMDE0MSIsIkNIMDEwMDAwMDAwMDI4MSIsIkNIMDEwMDAwMDAwMDEzMyIsIkNIMDEwMDAwMDAwMDEzNCIsIkNIMDEwMDAwMDAwMDEzNiIsIkNIMDEwMDAwMDAwMDI4MyIsIkNIMDEwMDAwMDAwMDIxMCIsIkNIMDEwMDAwMDAwMDIwOCIsIkNIMDEwMDAwMDAwMDIyNiIsIkNIMDEwMDAwMDAwMDIzOCIsIkNIMDEwMDAwMDAwMDEzNSIsIkNIMDEwMDAwMDAwMDI3NiIsIkNIMDEwMDAwMDAwMDMxMiIsIkNIMDEwMDAwMDAwMDMxMyIsIkNIMDEwMDAwMDAwMDMxNSIsIkNIMDEwMDAwMDAwMDMxNyIsIkNIMDEwMDAwMDAwMDMzMCIsIkNIMDEwMDAwMDAwMDMzMSIsIkNIMDEwMDAwMDAwMDMzNCIsIkNIMDEwMDAwMDAwMDMzNSIsIkNIMDEwMDAwMDAwMDMzNiIsIkNIMDIwMDAwMDAwMDAxMCIsIkNIMDEwMDAwMDAwMDMzNyJdLCJ2cmlvQ3VzdG9tZXJJZCI6IjU5ZmU0Y2FjLTFhNjMtNTk2OC05MWRmLTZmZDY0NzE1OTA3YSIsIm5hbWUiOiJIQUlERUUgVkFSRUxBIiwicmVhbG0iOiIvc3NsYSIsImNzbSI6IjIiLCJ0b2tlblR5cGUiOiJKV1RUb2tlbiJ9.iP6WEJptHLR3wzHpjUv47r0MtO4O5W5Fwdpn1lRMox1GN7eU6vSCA8VyV9yqwnhtaqkFM2HhHIJnbZlNZIAc2_EXqQlTvT7pAnLv58yshd2r8lrMChYcxC70dgce-5aeUpWZLE-pli4KzhSa0UhWS9j9svO2y4PSzI9aeO_RZ0-5AvF67d6FaqfqY3G7JpEZghMlopuzIhLNOIqlUFgOALWXzyQLxD5QRuKWzgmC7xZXP-Pv7ea60HosbBihGvrcAD6ARVhp3qD7lZzlkgfTKxS07cM11cFwsTk1qlofUn6sA4IuLGzb4ri7yKOPIhdt7BOStey4RIHGa5EUzJTVfw";
+    let chid = "CH0100000000016";
+    let keyId = "933de8e915535ae18c2558a5a76318c9";
+    let key = "45d78db595418f228edcdfd8eee3244a";
+
+    fetch("https://api.directvgo.com/entitlement/v3/playback/token/authorizer", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json",
+        "X-Client-Id": "web",
+        "X-Client-Version": "3.17.0"
+      },
+      body: JSON.stringify({
+        contentId: chid,
+        delay: 0,
+        isLive: true,
+        mobileNetwork: true
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.manifest && data.manifest.dash && data.manifest.dash.primary) {
+          let manifestUrl = data.manifest.dash.primary;
+
+          fetch(manifestUrl)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('HTTP error! status: ' + response.status);
+              }
+              const hdntl = response.headers.get('hdntl');
+              if (hdntl) {
+                console.log('hdntl:', hdntl);
+
+                let player = jwplayer("player");
+                player.setup({
+                  playlist: [{
+                    title: "Mega Deportes TV | Reproductor",
+                    description: "megadeportestv2.com",
+                    sources: [{
+                      default: false,
+                      type: "dash",
+                      file: manifestUrl,
+                      drm: {
+                        clearkey: {
+                          keyId: keyId,
+                          key: key
+                        }
+                      },
+                      label: "0",
+                      onXhrOpen: function (xhr, url) {
+                        if (!url.includes("manifest.mpd")) {
+                          xhr.setRequestHeader("Hdntl", hdntl);
+                        }
+                      }
+                    }]
+                  }],
+                  width: "100%",
+                  height: "100%",
+                  aspectratio: "16:9",
+                  autostart: false,
+                  cast: {},
+                  sharing: {}
+                });
+              } else {
+                console.log('Header "hdntl" not found in the response.');
+              }
+              return response.text();
+            })
+            .catch(error => console.error('Error fetching MPD:', error));
+
+        } else {
+          console.error("Dash primary URL not found in the response.");
+        }
+      })
+      .catch(error => console.error("Error fetching authorization token:", error));
+    </script>
+</body>
+</html>
