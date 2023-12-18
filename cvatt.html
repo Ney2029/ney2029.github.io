@@ -58,9 +58,41 @@ else
 number = 3;
 
 var mt = ["edge-live02-mun", "edge-live01-mun", "edge-live01-bel", "edge-live11-hr", "edge-live14-hr", "edge-live15-hr", "edge-live16-hr", "edge-live17-hr", "edge-live32-hr", "edge-live12-sl", "edge-live13-sl", "edge-live15-sl", "edge-live16-sl", "edge-live17-sl", "edge-live31-sl", "edge-vod02-sl", "edge-vod04-sl", "edge-live34-hr", "edge-vod06-sl", "edge-vod04-hr"];
-var random = Math.floor(Math.random() * mt.length)
-
+var random = Math.floor(Math.random() * mt.length)	
 console.log("Selected mt:", mt[random]);
+
+async function testSubdomains() {
+  for (let i = 0; i < mt.length; i++) {
+    let subdomain = mt[i];
+    let mpdURL = "//" + subdomain + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
+
+    try {
+      await testMpdURL(mpdURL);
+      console.log("Subdomain", subdomain, "is working.");
+    } catch (error) {
+      console.error("Subdomain", subdomain, "is not working. Error:", error.message);
+    }
+  }
+}
+
+function testMpdURL(url) {
+  return new Promise((resolve, reject) => {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          resolve();
+        } else {
+          reject(new Error("HTTP request failed with status " + xhr.status));
+        }
+      }
+    };
+    xhr.open("GET", url, true);
+    xhr.send();
+  });
+}
+testSubdomains();
+
 	
 var mpd = "//" + mt[random] + ".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc/"+atob(getURL)+".mpd";
 var mpd2 = "//" + mt[random] +".cvattv.com.ar/live/c3eds/Eventos1HD/SA_Live_dash_enc/Eventos1HD.mpd";
