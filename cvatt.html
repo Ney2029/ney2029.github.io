@@ -904,16 +904,26 @@ else
 		width: "100%",
 		height: "100%",
 		aspectratio: "16:9",
-		autostart: false,
+		autostart: true,
 		cast: {},
 		sharing: {}
 	});
 }
 
+if (getURL) {
+    playerInstance.on("error", function() {
+        var redirectUrl = '/cvatt.html?get=' + (getURL || '');
+
+        if (getLang) {
+            redirectUrl += '&lang=' + getLang;
+        }
+
+        window.location = redirectUrl;
+    });
+}
 
 
-
-if (getURL == "Rm94U3BvcnRz")
+else if (getURL == "Rm94U3BvcnRz")
 {
         playerInstance.on("error", function() {
             window.location = 'https://whitemouseapple.com/fox1.html';
