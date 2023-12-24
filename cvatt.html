@@ -907,12 +907,37 @@ else
 		autostart: true,
 		cast: {},
 		sharing: {},
+		language: currentLanguage
 	});
 	
-	
+	playerInstance.on('play', function(e) {
+    cambiarIdioma(currentLanguage);
+  });
+}
+
+function cambiarIdioma(idioma) {
+  currentLanguage = idioma;
+  jwplayer().setCurrentAudioTrack(currentLanguage);
 }
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  inicializarReproductor();
+});
+
+
+document.getElementById('cambiarAIngles').addEventListener('click', function() {
+  cambiarIdioma(0); 
+});
+
+document.getElementById('cambiarAEspanol').addEventListener('click', function() {
+  cambiarIdioma(1); 
+});
+	
+}
+
+var playerInstance;
+var currentLanguage = 1; 
 	
 if (getURL) {
     playerInstance.on("error", function() {
