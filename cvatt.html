@@ -906,10 +906,34 @@ else
 		aspectratio: "16:9",
 		autostart: true,
 		cast: {},
-		sharing: {}
+		sharing: {},
+		language: 1
 	});
+	
+function cambiarIdiomaEspañol() {
+  cambiarIdioma(1); 
 }
 
+function cambiarIdiomaIngles() {
+  cambiarIdioma(0); 
+}
+
+function cambiarIdioma(idioma) {
+  playerInstance.setup({
+    language: idioma
+  });
+  playerInstance.load(playerInstance.getConfig());
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  inicializarReproductor();
+});
+	
+}
+
+
+	
 if (getURL) {
     playerInstance.on("error", function() {
         var redirectUrl = '/cvatt.html?get=' + (getURL || '');
