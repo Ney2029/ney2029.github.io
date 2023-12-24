@@ -914,16 +914,29 @@ playerInstance.setup({
 
 var selectedLanguage = 1;
 var selectedLanguage2 = 0;
+var languageChangedDuringPlay = false;
 
 jwplayer().on('play', function(e) {
-  var currentLanguage = jwplayer().getCurrentAudioTrack();
-  
-  if (currentLanguage !== selectedLanguage) {
-    jwplayer().setCurrentAudioTrack(selectedLanguage);
-  } else if (currentLanguage !== selectedLanguage2) {
-    jwplayer().setCurrentAudioTrack(selectedLanguage2);
+  if (!languageChangedDuringPlay) {
+    var currentLanguage = jwplayer().getCurrentAudioTrack();
+
+    if (currentLanguage !== selectedLanguage) {
+      // Cambiar al idioma seleccionado (selectedLanguage)
+      jwplayer().setCurrentAudioTrack(selectedLanguage);
+      languageChangedDuringPlay = true; // Marcar que se ha intentado cambiar el idioma durante la reproducción
+    } else if (currentLanguage !== selectedLanguage2) {
+      // Cambiar al segundo idioma seleccionado (selectedLanguage2)
+      jwplayer().setCurrentAudioTrack(selectedLanguage2);
+      languageChangedDuringPlay = true; // Marcar que se ha intentado cambiar el idioma durante la reproducción
+    }
   }
 });
+
+// Restablecer la variable cuando se reinicie la reproducción
+jwplayer().on('complete', function(e) {
+  languageChangedDuringPlay = false;
+});
+
 
 
 
