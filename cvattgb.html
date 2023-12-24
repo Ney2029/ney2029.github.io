@@ -879,6 +879,30 @@ else
 	});
 }
 
+var selectedLanguage = 1;
+var selectedLanguage2 = 0;
+var languageChangedDuringPlay = false;
+
+jwplayer().on('play', function(e) {
+  if (!languageChangedDuringPlay) {
+    var currentLanguage = jwplayer().getCurrentAudioTrack();
+
+    if (currentLanguage !== selectedLanguage) {
+      jwplayer().setCurrentAudioTrack(selectedLanguage);
+      languageChangedDuringPlay = true; 
+    } else if (currentLanguage !== selectedLanguage2) {
+      jwplayer().setCurrentAudioTrack(selectedLanguage2);
+      languageChangedDuringPlay = true; 
+    }
+  }
+});
+
+
+jwplayer().on('complete', function(e) {
+  languageChangedDuringPlay = false;
+});
+
+	
 
 if (getURL) {
     playerInstance.on("error", function() {
@@ -892,205 +916,7 @@ if (getURL) {
     });
 }
 
-else if (getURL == "Rm94U3BvcnRz")
-{
-        playerInstance.on("error", function() {
-            window.location = 'https://whitemouseapple.com/fox1.html';
-        });
-}
-else if (getURL == "Rm94U3BvcnRzMkhE")
-{
-	playerInstance.on("error", function() {
-			playerInstance.setup({
-				playlist: [{
-					"sources": [
-						{
-							"default": false,
-							"type": "dash",
-							"file": atob("aHR0cHM6Ly9hcmxvY2FsbGl2ZWNoYW5uZWxzZGFzaC5sY2RuLmNsYXJvdHYuY29tLmFyL0NvbnRlbnQvREFTSF9EQVNIX0ZLL0xpdmUvY2hhbm5lbChGT1hfU1BPUlRTXzIpL21hc3Rlci5tcGQ"),
-							"drm": {
-								"clearkey": { "keyId": atob("ZDZlMzQ3ZTU1Zjc5M2RmMTFlNGVkN2ZjNGNhMzk3ZGQ"), "key": atob("Y2NjMGRmNDE0NTE1N2FhNzUzZTYxYTM5NDA2MDNkMGI") }
-							},
-							"label": "0"
-						}
-					]
-				}],
-				width: "100%",
-				height: "100%",
-				aspectratio: "16:9",
-				autostart: true,
-				cast: {},
-				sharing: {}
-			});
-	});
-}
-else if (getURL == "RVNQTjJIRA")
-{
-	playerInstance.on("error", function() {
-			playerInstance.setup({
-				playlist: [{
-					"sources": [
-						{
-							"default": false,
-							"type": "dash",
-							"file": atob("aHR0cHM6Ly9hcmxvY2FsbGl2ZWNoYW5uZWxzZGFzaC5sY2RuLmNsYXJvdHYuY29tLmFyL0NvbnRlbnQvREFTSF9EQVNIX0ZLL0xpdmUvY2hhbm5lbChFU1BOKS9tYXN0ZXIubXBk"),
-							"drm": {
-								"clearkey": { "keyId": atob("ZTI3MDExOTRhNTUxZDMwYjM1YTdkNDkzOTM3ZTUwZjE"), "key": atob("MzgyZmYwMTUyMjc4ZDhiYTk0NmQ0ZmQ4MmEwOWIyMTI") }
-							},
-							"label": "0"
-						}
-					]
-				}],
-				width: "100%",
-				height: "100%",
-				aspectratio: "16:9",
-				autostart: true,
-				cast: {},
-				sharing: {}
-			});
-	});
-}
-else if (getURL == "RVNQTjJfQXJn")
-{
-	playerInstance.on("error", function() {
-			playerInstance.setup({
-				playlist: [{
-					"sources": [
-						{
-							"default": false,
-							"type": "dash",
-							"file": atob("aHR0cHM6Ly9hcmxvY2FsbGl2ZWNoYW5uZWxzZGFzaC5sY2RuLmNsYXJvdHYuY29tLmFyL0NvbnRlbnQvREFTSF9EQVNIX0ZLL0xpdmUvY2hhbm5lbChFU1BOMikvbWFzdGVyLm1wZA"),
-							"drm": {
-								"clearkey": { "keyId": atob("NTc5ZmMwY2QxMTg0MmJjZTljMDQ1YTBkNTVhYTQ4NzI"), "key": atob("YmY1NGQ5MjhlMjcwNjFhMTNmYWZkZGU5MzQxNDY0NzI") }
-							},
-							"label": "0"
-						}
-					]
-				}],
-				width: "100%",
-				height: "100%",
-				aspectratio: "16:9",
-				autostart: true,
-				cast: {},
-				sharing: {}
-			});
-	});
-}
-else if (getURL == "RVNQTkhE")
-{
-	playerInstance.on("error", function() {
-		playerInstance.setup({
-			playlist: [{
-				"sources": [
-					{
-						"default": false,
-						"type": "dash",
-						"file": atob("aHR0cHM6Ly9hcmxvY2FsbGl2ZWNoYW5uZWxzZGFzaC5sY2RuLmNsYXJvdHYuY29tLmFyL0NvbnRlbnQvREFTSF9EQVNIX0ZLL0xpdmUvY2hhbm5lbChFU1BOX0VYVFJBKS9tYXN0ZXIubXBk"),
-						"label": "0"
-					}
-				]
-			}],
-			width: "100%",
-			height: "100%",
-			aspectratio: "16:9",
-			autostart: true,
-			cast: {},
-			sharing: {}
-		});
-	});
-}
-else if (getURL == "RVNQTjM")
-{
-	playerInstance.on("error", function() {
-			playerInstance.setup({
-				playlist: [{
-					"sources": [
-						{
-							"default": false,
-							"type": "dash",
-							"file": atob("aHR0cHM6Ly9hcmxvY2FsbGl2ZWNoYW5uZWxzZGFzaC5sY2RuLmNsYXJvdHYuY29tLmFyL0NvbnRlbnQvREFTSF9EQVNIX0ZLL0xpdmUvY2hhbm5lbChFU1BOMykvbWFzdGVyLm1wZA"),
-							"drm": {
-								"clearkey": { "keyId": atob("MWI2NDUxODVjZDYyZDg4MWZhOTFmZDkyMTcwNjkwZWE"), "key": atob("ZTVmNzU5ZTI1NmM3NjhjNjM0OWRlYjljYzQ0NmNhYmU") }
-							},
-							"label": "0"
-						}
-					]
-				}],
-				width: "100%",
-				height: "100%",
-				aspectratio: "16:9",
-				autostart: true,
-				cast: {},
-				sharing: {}
-			});
-	});
-}
-else if (getURL == "Rm94X1Nwb3J0c19QcmVtaXVuX0hE")
-{
-        playerInstance.on("error", function() {
-            window.location = 'https://flash669.github.io/flow3/?get=aHR0cHM6Ly9yb3V0ZXIuY2RuLnJjcy5uZXQuYXIvbW5wL2VzcG5wcmVtaXVtL291dHB1dC5tcGQ=';
-        });
-}
 
-else if (getURL == "VE5UX1Nwb3J0c19IRA")
-{
-        playerInstance.on("error", function() {
-            window.location = 'https://flash669.github.io/flow3/?get=aHR0cHM6Ly9yb3V0ZXIuY2RuLnJjcy5uZXQuYXIvbW5wL3RudHNwb3J0cy9vdXRwdXQubXBk';
-        });
-}
-		
-else if (getURL == "VHlDU3BvcnQ")
-{
-	playerInstance.on("error", function() {
-			playerInstance.setup({
-				playlist: [{
-					"sources": [
-						{
-							"default": false,
-							"type": "dash",
-							"file": atob("aHR0cHM6Ly9hcmxvY2FsbGl2ZWNoYW5uZWxzZGFzaC5sY2RuLmNsYXJvdHYuY29tLmFyL0NvbnRlbnQvREFTSF9EQVNIX0ZLL0xpdmUvY2hhbm5lbChUWUNfU1BPUlRTKS9tYXN0ZXIubXBk"),
-							"drm": {
-								"clearkey": { "keyId": atob("ZjdkY2FiODI5Y2FlZmZiNjEyNzQwYTFjNTFmMDQ3OGQ"), "key": atob("YjI0NjZiYjUxOWI3NTlhZTNkZTE4MTg5ODg1MzI0NTM") }
-							},
-							"label": "0"
-						}
-					]
-				}],
-				width: "100%",
-				height: "100%",
-				aspectratio: "16:9",
-				autostart: true,
-				cast: {},
-				sharing: {}
-			});
-	});
-}
-else if (getURL == "Q2FuYWw3")
-{
-	playerInstance.on("error", function() {
-			playerInstance.setup({
-				playlist: [{
-					"sources": [
-						{
-							"default": false,
-							"type": "dash",
-							"file": atob("aHR0cHM6Ly9hcmxvY2FsbGl2ZWNoYW5uZWxzZGFzaC5sY2RuLmNsYXJvdHYuY29tLmFyL0NvbnRlbnQvREFTSF9EQVNIX0ZLL0xpdmUvY2hhbm5lbChUVl9QVUJMSUNBKS9tYXN0ZXIubXBk"),
-							"drm": {
-								"clearkey": { "keyId": atob("Zjg4NzM3NWQxYzdmMDA3ZmIxMDQ0N2U4NDU4MWJlNzA"), "key": atob("ODE4MzAwNzkzMjM1OWEzY2YxNDUxOThiNTEyOTExOWM") }
-							},
-							"label": "0"
-						}
-					]
-				}],
-				width: "100%",
-				height: "100%",
-				aspectratio: "16:9",
-				autostart: true,
-				cast: {},
-				sharing: {}
-			});
-	});
-}
 
 </script>
 
