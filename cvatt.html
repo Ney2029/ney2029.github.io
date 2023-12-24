@@ -886,31 +886,36 @@ if (getURL == "RXZlbnRvczFIRA")
 
 else
 {
-	playerInstance.setup({
+var playerInstance;
+var currentLanguage = 0; 
 
-		playlist: [{
+function inicializarReproductor() {
+  playerInstance = jwplayer('Player'); 
+  playerInstance.setup({
+    playlist: [{
 			"sources": [
-				{
-					"default": false,
-					"type": "dash",
-					"file": mpd,
-					"drm": {
-						"clearkey": { "keyId": keyId, "key": key }
-					},
-					"label": "0"
-				}
+					{
+							"default": false,
+							"type": "dash",
+							"file": mpd,
+							"drm": {
+									"clearkey": { "keyId": keyId, "key": key }
+							},
+							"label": "0"
+					}
 			]
-		}],
-		width: "100%",
-		height: "100%",
-		aspectratio: "16:9",
-		autostart: true,
-		cast: {},
-		sharing: {},
-		language: currentLanguage
-	});
-	
-	playerInstance.on('play', function(e) {
+	}],
+    width: '100%',
+    height: '100%',
+    aspectratio: '16:9',
+    autostart: true,
+    cast: {},
+    sharing: {},
+    language: currentLanguage // Establecer el idioma inicial
+  });
+
+  // Manejar eventos de cambio de idioma mientras se está reproduciendo
+  playerInstance.on('play', function(e) {
     cambiarIdioma(currentLanguage);
   });
 }
@@ -920,24 +925,24 @@ function cambiarIdioma(idioma) {
   jwplayer().setCurrentAudioTrack(currentLanguage);
 }
 
-
+// Inicializar el reproductor cuando la página se carga
 document.addEventListener('DOMContentLoaded', function() {
   inicializarReproductor();
 });
 
-
+// Cambiar manualmente el idioma, por ejemplo, al hacer clic en un botón
 document.getElementById('cambiarAIngles').addEventListener('click', function() {
-  cambiarIdioma(0); 
+  cambiarIdioma(0); // Cambiar a inglés
 });
 
 document.getElementById('cambiarAEspanol').addEventListener('click', function() {
-  cambiarIdioma(1); 
+  cambiarIdioma(1); // Cambiar a español
 });
+
 	
 }
 
-var playerInstance;
-var currentLanguage = 1; 
+
 	
 if (getURL) {
     playerInstance.on("error", function() {
