@@ -913,31 +913,17 @@ playerInstance.setup({
 }
 
 var selectedLanguage = 1;
+var selectedLanguage2 = 0;
 
-// Función para cambiar manualmente el idioma
-function changeLanguage(language) {
-  selectedLanguage = language;
-  jwplayer().setCurrentAudioTrack(selectedLanguage);
-}
-
-// Evento cuando se hace clic en el botón de inglés
-document.getElementById('buttonEnglish').addEventListener('click', function() {
-  changeLanguage(0); // Cambiar a inglés
-});
-
-// Evento cuando se hace clic en el botón de español
-document.getElementById('buttonSpanish').addEventListener('click', function() {
-  changeLanguage(1); // Cambiar a español
-});
-
-// Evento cuando se reproduce el video
 jwplayer().on('play', function(e) {
   var currentLanguage = jwplayer().getCurrentAudioTrack();
   
-  if (currentLanguage !== selectedLanguage) {
+  if (currentLanguage !== selectedLanguage && currentLanguage !== selectedLanguage2) {
     jwplayer().setCurrentAudioTrack(selectedLanguage);
   }
 });
+
+
 
 
 
