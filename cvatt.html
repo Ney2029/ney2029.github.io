@@ -907,28 +907,8 @@ else
 		autostart: true,
 		cast: {},
 		sharing: {},
-		language: 1
 	});
 	
-function cambiarIdiomaEspañol() {
-  cambiarIdioma(1); 
-}
-
-function cambiarIdiomaIngles() {
-  cambiarIdioma(0); 
-}
-
-function cambiarIdioma(idioma) {
-  playerInstance.setup({
-    language: idioma
-  });
-  playerInstance.load(playerInstance.getConfig());
-}
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  inicializarReproductor();
-});
 	
 }
 
