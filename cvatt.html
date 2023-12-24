@@ -918,10 +918,13 @@ var selectedLanguage2 = 0;
 jwplayer().on('play', function(e) {
   var currentLanguage = jwplayer().getCurrentAudioTrack();
   
-  if (currentLanguage !== selectedLanguage && currentLanguage !== selectedLanguage2) {
+  if (currentLanguage !== selectedLanguage) {
     jwplayer().setCurrentAudioTrack(selectedLanguage);
+  } else if (currentLanguage !== selectedLanguage2) {
+    jwplayer().setCurrentAudioTrack(selectedLanguage2);
   }
 });
+
 
 
 
