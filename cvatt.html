@@ -912,11 +912,16 @@ playerInstance.setup({
 	
 }
 
-var selectedLanguage = 1;  
+var selectedLanguage = 1;
 
 jwplayer().on('play', function(e) {
-  jwplayer().setCurrentAudioTrack(selectedLanguage);
+  var currentLanguage = jwplayer().getCurrentAudioTrack();
+  
+  if (currentLanguage !== selectedLanguage) {
+    jwplayer().setCurrentAudioTrack(selectedLanguage);
+  }
 });
+
 
 	
 if (getURL) {
