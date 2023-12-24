@@ -921,18 +921,16 @@ jwplayer().on('play', function(e) {
     var currentLanguage = jwplayer().getCurrentAudioTrack();
 
     if (currentLanguage !== selectedLanguage) {
-      // Cambiar al idioma seleccionado (selectedLanguage)
       jwplayer().setCurrentAudioTrack(selectedLanguage);
-      languageChangedDuringPlay = true; // Marcar que se ha intentado cambiar el idioma durante la reproducción
+      languageChangedDuringPlay = true; 
     } else if (currentLanguage !== selectedLanguage2) {
-      // Cambiar al segundo idioma seleccionado (selectedLanguage2)
       jwplayer().setCurrentAudioTrack(selectedLanguage2);
-      languageChangedDuringPlay = true; // Marcar que se ha intentado cambiar el idioma durante la reproducción
+      languageChangedDuringPlay = true; 
     }
   }
 });
 
-// Restablecer la variable cuando se reinicie la reproducción
+
 jwplayer().on('complete', function(e) {
   languageChangedDuringPlay = false;
 });
