@@ -90,7 +90,6 @@ testSubdomains();*/
 	
 var mpd = "//" + mt[random] + ".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc/"+atob(getURL)+".mpd";
 var mpd2 = "//" + mt[random] +".cvattv.com.ar/live/c3eds/Eventos1HD/SA_Live_dash_enc/Eventos1HD.mpd";
-var mpd3 = "//" + mt[random] + ".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc_2A/"+atob(getURL)+".mpd";
 if (getURL == "RVNQTjJIRA")
 {
 	keyId = "e884b711ab111beb8a7ba1e7bcbdc9bf";
@@ -868,26 +867,6 @@ if (getURL == "RXZlbnRvczFIRA")
                             "clearkey": {
                                 "keyId": "5c86e237317c2231ac1bc130e995fad6",
                                 "key": "dcacf7b239ee03df3c69ca11dbcde4eb"
-                            }
-                        },
-		width: "100%",
-		height: "100%",
-		aspectratio: "16:9",
-		autostart: false,
-		cast: {},
-		sharing: {}
-	});
-}
-
-else if (getURL == "U1VSX1RWX0M0")
-{
-	playerInstance.setup({
-		"type": "dash",
-		"file": mpd3,
-		"drm": {
-                            "clearkey": {
-                                "keyId": "c047764a90e9a5b0213aec8fed8a24aa",
-                                "key": "07e62001064fbe64796b4ed3836761f4"
                             }
                         },
 		width: "100%",
