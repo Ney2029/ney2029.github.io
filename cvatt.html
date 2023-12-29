@@ -900,15 +900,15 @@ playerInstance.setup({
 		width: "100%",
 		height: "100%",
 		aspectratio: "16:9",
-		autostart: true,
+		autostart: false,
 		cast: {},
 		sharing: {}
 	});
 	
 }
 
-var selectedLanguage = 1;
-var selectedLanguage2 = 0;
+var selectedLanguage = 0;
+var selectedLanguage2 = 1;
 var languageChangedDuringPlay = false;
 
 jwplayer().on('play', function(e) {
