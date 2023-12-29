@@ -90,6 +90,7 @@ testSubdomains();*/
 	
 var mpd = "//" + mt[random] + ".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc/"+atob(getURL)+".mpd";
 var mpd2 = "//" + mt[random] +".cvattv.com.ar/live/c3eds/Eventos1HD/SA_Live_dash_enc/Eventos1HD.mpd";
+var mpd3 = "//" + mt[random] + ".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc_2A/"+atob(getURL)+".mpd";
 if (getURL == "RVNQTjJIRA")
 {
 	keyId = "e884b711ab111beb8a7ba1e7bcbdc9bf";
@@ -877,6 +878,27 @@ if (getURL == "RXZlbnRvczFIRA")
 		sharing: {}
 	});
 }
+
+else if (getURL == "RXZlbnRvczFIRA")
+{
+	playerInstance.setup({
+		"type": "dash",
+		"file": mpd3,
+		"drm": {
+                            "clearkey": {
+                                "keyId": "c047764a90e9a5b0213aec8fed8a24aa",
+                                "key": "07e62001064fbe64796b4ed3836761f4"
+                            }
+                        },
+		width: "100%",
+		height: "100%",
+		aspectratio: "16:9",
+		autostart: false,
+		cast: {},
+		sharing: {}
+	});
+}
+	
 
 else
 {
