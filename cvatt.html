@@ -28,6 +28,7 @@ var getLang = getParameterByName('lang');
 var getIMG = getParameterByName('img');
 var getKEY  = getParameterByName('key');
 var getKEY2  = getParameterByName('key2');
+var start  = getParameterByName('start');
 if (getURL == "") {alert('Vuelve a la pÃƒÆ’Ã‚Â¡gina anterior');}
 
 </script>
@@ -900,7 +901,7 @@ playerInstance.setup({
 		width: "100%",
 		height: "100%",
 		aspectratio: "16:9",
-		autostart: false,
+		autostart: start,
 		cast: {},
 		sharing: {}
 	});
@@ -933,34 +934,9 @@ jwplayer().on('complete', function(e) {
 
 
 
-
-
-	
 if (getURL) {
     playerInstance.on("error", function() {
-        playerInstance.setup({
-            playlist: [{
-                "sources": [{
-                    "default": false,
-                    "type": "dash",
-                    "file": mpd,
-                    "drm": {
-                        "clearkey": { "keyId": keyId, "key": key }
-                    },
-                    "label": "0"
-                }]
-            }],
-            width: "100%",
-            height: "100%",
-            aspectratio: "16:9",
-            autostart: true,
-            cast: {},
-            sharing: {}
-        });
-    });
-} else {
-    playerInstance.on("error", function() {
-        var redirectUrl = '/cvatt.html?get=' + (getURL || '');
+        var redirectUrl = '/cvatt.html?get=' + (getURL || '&start=true');
 
         if (getLang) {
             redirectUrl += '&lang=' + getLang;
@@ -969,6 +945,9 @@ if (getURL) {
         window.location = redirectUrl;
     });
 }
+
+	
+
 
 
 
