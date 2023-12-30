@@ -28,7 +28,6 @@ var getLang = getParameterByName('lang');
 var getIMG = getParameterByName('img');
 var getKEY  = getParameterByName('key');
 var getKEY2  = getParameterByName('key2');
-var start  = getParameterByName('start');
 if (getURL == "") {alert('Vuelve a la pÃƒÆ’Ã‚Â¡gina anterior');}
 
 </script>
@@ -883,28 +882,45 @@ if (getURL == "RXZlbnRvczFIRA")
 else
 {
 
-playerInstance.setup({
+var start = getParameterByName('start');
+var autostart = start !== undefined && start === "true";
 
-		playlist: [{
-			"sources": [
-				{
-					"default": false,
-					"type": "dash",
-					"file": mpd,
-					"drm": {
-						"clearkey": { "keyId": keyId, "key": key }
-					},
-					"label": "0"
-				}
-			]
-		}],
-		width: "100%",
-		height: "100%",
-		aspectratio: "16:9",
-		autostart: start,
-		cast: {},
-		sharing: {}
-	});
+playerInstance.setup({
+    playlist: [{
+        "sources": [
+            {
+                "default": false,
+                "type": "dash",
+                "file": mpd,
+                "drm": {
+                    "clearkey": { "keyId": keyId, "key": key }
+                },
+                "label": "0"
+            }
+        ]
+    }],
+    width: "100%",
+    height: "100%",
+    aspectratio: "16:9",
+    autostart: autostart,
+    cast: {},
+    sharing: {}
+});
+
+if (getURL !== undefined && getURL !== null) {
+    playerInstance.on("error", function() {
+        var redirectUrl = '/cvatt.html?get=' + getURL;
+
+        if (getLang) {
+            redirectUrl += '&lang=' + getLang;
+        }
+
+        redirectUrl += '&start=true';
+
+        window.location = redirectUrl;
+    });
+}
+
 	
 }
 
@@ -934,19 +950,8 @@ jwplayer().on('complete', function(e) {
 
 
 
-if (getURL !== undefined && getURL !== null) {
-    playerInstance.on("error", function() {
-        var redirectUrl = '/cvatt.html?get=' + getURL;
 
-        if (getLang) {
-            redirectUrl += '&lang=' + getLang;
-        }
-
-        redirectUrl += '&start=true';
-
-        window.location = redirectUrl;
-    });
-}
+	
 
 
 	
