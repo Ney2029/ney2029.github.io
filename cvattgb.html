@@ -849,7 +849,8 @@ if (getURL == "RXZlbnRvczFIRA")
 
 else
 {
-	var start = getParameterByName('start');
+
+var start = getParameterByName('start');
 var autostart = start !== undefined && start === "true";
 
 playerInstance.setup({
@@ -876,7 +877,7 @@ playerInstance.setup({
 
 if (getURL !== undefined && getURL !== null) {
     playerInstance.on("error", function() {
-        var redirectUrl = '/cvattgb.html?get=' + getURL;
+        var redirectUrl = '/cvatt.html?get=' + getURL;
 
         if (getLang) {
             redirectUrl += '&lang=' + getLang;
@@ -887,9 +888,11 @@ if (getURL !== undefined && getURL !== null) {
         window.location = redirectUrl;
     });
 }
+
 	
 }
 
+	
 var selectedLanguage = 1;
 var selectedLanguage2 = 0;
 var languageChangedDuringPlay = false;
@@ -898,20 +901,19 @@ jwplayer().on('play', function(e) {
   if (!languageChangedDuringPlay) {
     var currentLanguage = jwplayer().getCurrentAudioTrack();
 
-    if (currentLanguage !== selectedLanguage) {
+    if (currentLanguage !== selectedLanguage && currentLanguage !== selectedLanguage2) {
       jwplayer().setCurrentAudioTrack(selectedLanguage);
-      languageChangedDuringPlay = true; 
-    } else if (currentLanguage !== selectedLanguage2) {
-      jwplayer().setCurrentAudioTrack(selectedLanguage2);
       languageChangedDuringPlay = true; 
     }
   }
 });
 
-
 jwplayer().on('complete', function(e) {
   languageChangedDuringPlay = false;
 });
+
+
+
 
 	
 
