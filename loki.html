@@ -25,81 +25,81 @@
     let keyId = "de7d7ded48b437d691966acdc8a97262"; 
     let key = "c1696c67cf7a678932d33340135ea82b"; 
 
-    // Obtener el token de autorización 
-    fetch("https://api.codetabs.com/v1/proxy/?quest=https://api.directvgo.com/entitlement/v3/playback/token/authorizer", { 
-      method: "POST", 
-      headers: { 
-        "Authorization": "Bearer " + token, 
-        "Content-Type": "application/json", 
-        "X-Client-Id": "web", 
-        "X-Client-Version": "3.17.0" 
-      }, 
-      body: JSON.stringify({ 
-        contentId: chid, 
-        delay: 0, 
-        isLive: true, 
-        mobileNetwork: true 
-      }) 
-    }) 
-      .then(response => response.json()) 
-      .then(data => { 
-        if (data.manifest && data.manifest.dash && data.manifest.dash.primary) { 
-          let manifestUrl = data.manifest.dash.primary; 
+    // Obtener el token de autorización
+fetch("https://api.codetabs.com/v1/proxy/?quest=https://api.directvgo.com/entitlement/v3/playback/token/authorizer", {
+  method: "POST",
+  headers: {
+    "Authorization": "Bearer " + token,
+    "Content-Type": "application/json",
+    "X-Client-Id": "web",
+    "X-Client-Version": "3.17.0"
+  },
+  body: JSON.stringify({
+    contentId: chid,
+    delay: 0,
+    isLive: true,
+    mobileNetwork: true
+  })
+})
+  .then(response => response.json())
+  .then(data => {
+    if (data.hls && data.hls.primary) { // Cambiar a hls en lugar de manifest.dash
+      let hlsUrl = data.hls.primary;
 
-          // Realizar solicitud para obtener hdntl 
-          fetch(manifestUrl) 
-            .then(response => { 
-              if (!response.ok) { 
-                throw new Error('HTTP error! status: ' + response.status); 
-              } 
-              const hdntl = response.headers.get('hdntl'); 
-              if (hdntl) { 
-                // hdntl está disponible, puedes usarlo según sea necesario 
-                console.log('hdntl:', hdntl); 
+      // Realizar solicitud para obtener hdntl
+      fetch(hlsUrl)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('HTTP error! status: ' + response.status);
+          }
+          const hdntl = response.headers.get('hdntl');
+          if (hdntl) {
+            // hdntl está disponible, puedes usarlo según sea necesario
+            console.log('hdntl:', hdntl);
 
-                // Configurar JWPlayer con clearkey y hdntl 
-                let player = jwplayer("player"); 
-                player.setup({ 
-                  playlist: [{ 
-                    sources: [{ 
-                      default: false, 
-                      type: "dash", 
-                      file: manifestUrl, 
-                      drm: { 
-                        clearkey: { 
-                          keyId: keyId, 
-                          key: key 
-                        } 
-                      }, 
-                      label: "0", 
-                      // Agregar encabezado "Hdntl" a la solicitud de audio 
-                      onXhrOpen: function (xhr, url) { 
-                        if (!url.includes("manifest.mpd")) { 
-                          xhr.setRequestHeader("Hdntl", hdntl); 
-                        } 
-                      } 
-                    }] 
-                  }], 
-                  width: "100%", 
-                  height: "100%", 
-                  aspectratio: "16:9", 
-                  autostart: true, 
-                  cast: {}, 
-                  sharing: false 
-                }); 
-              } else { 
-                console.log('Header "hdntl" not found in the response.'); 
-              } 
-              return response.text(); 
-            }) 
-            .catch(error => console.error('Error fetching MPD:', error)); 
+            // Configurar JWPlayer con clearkey y hdntl
+            let player = jwplayer("player");
+            player.setup({
+              playlist: [{
+                sources: [{
+                  default: false,
+                  type: "hls", // Cambiar a hls en lugar de dash
+                  file: hlsUrl,
+                  drm: {
+                    clearkey: {
+                      keyId: keyId,
+                      key: key
+                    }
+                  },
+                  label: "0",
+                  // Agregar encabezado "Hdntl" a la solicitud de audio
+                  onXhrOpen: function (xhr, url) {
+                    if (!url.includes("master.m3u8")) {
+                      xhr.setRequestHeader("Hdntl", hdntl);
+                    }
+                  }
+                }]
+              }],
+              width: "100%",
+              height: "100%",
+              aspectratio: "16:9",
+              autostart: true,
+              cast: {},
+              sharing: false
+            });
+          } else {
+            console.log('Header "hdntl" not found in the response.');
+          }
+          return response.text();
+        })
+        .catch(error => console.error('Error fetching HLS:', error));
 
-        } else { 
-          console.error("Dash primary URL not found in the response."); 
-        } 
-      }) 
-      .catch(error => console.error("Error fetching authorization token:", error)); 
-  
+    } else {
+      console.error("HLS primary URL not found in the response."); // Cambiar a HLS en lugar de Dash
+    }
+  })
+  .catch(error => console.error("Error fetching authorization token:", error));
+
  
  
  </script>
