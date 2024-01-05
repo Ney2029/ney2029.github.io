@@ -18,8 +18,8 @@
   }
 
   var get = getParameterByName('get');
+  var keyId = getParameterByName('keyId');
   var key = getParameterByName('key');
-  var key2 = getParameterByName('key2');
   var getIMG = getParameterByName('img');
 </script>
 
@@ -36,11 +36,9 @@
         "type": "dash",
         "file": atob(get),
         "drm": {
-          "widevine": {
-            "url": atob(key),
-            "headers": {
-              "Authorization": "Bearer " + atob(key2)
-            }
+          "clearkey": {
+            "keyId": atob(keyId),
+            "key": atob(key)
           }
         },
         "label": "0"
