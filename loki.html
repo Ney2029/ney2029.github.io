@@ -1,0 +1,112 @@
+<html lang="es"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <title>.</title>
+<script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
+<script data-cfasync="false" src="//achcdn.com/script/suv4.js" data-adel="lwsu" cdnd="achcdn.com" zid="7692102"></script>
+</head>
+<body>
+  <div id="player"></div>
+
+ <script>
+
+
+
+
+    // Variables - Reemplaza con tus propios valores 
+    let token = "eyJ0eXAiOiJKV1QiLCJraWQiOiJ3VTNpZklJYUxPVUFSZVJCL0ZHNmVNMVAxUU09IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiX01WSlRlV0ZIQTc4N1VLUDFsV0hPUSIsInN1YiI6InZpZ2lhcGFzQGhvdG1haWwuY29tIiwiYnVzaW5lc3NVbml0IjoiU1NMQS1EVEgiLCJyZWdpb25zIjpbImY5MTdjZmY2LTAyNWEtNDkxNy04NGQ2LWZiNjg2Njk3ZDkzYyIsIjJlMTY3MjM3LWM3YmItNDIzYi1iNjA2LWMzMTExNWFkYjFkYSJdLCJhdWRpdFRyYWNraW5nSWQiOiI0MGU2ZWYwMS0yN2M5LTQ0ODQtYTNjMS0yMjI1NGNlNDA1ZWItNDAyODkyNDQiLCJpc28yQ29kZSI6IkFSIiwiaXNzIjoiaHR0cHM6Ly9wcm9kcm9jay5kaXJlY3R2Z28uY29tOjQ0My9vcGVuYW0vb2F1dGgyL3JlYWxtcy9yb290L3JlYWxtcy9zc2xhIiwidG9rZW5OYW1lIjoiaWRfdG9rZW4iLCJkZXZpY2VJZCI6IlgzQ1U3dWh2RkFRWUhhM0lfQVpGanJVQWd4NFNPNVdTMGhGTkhSbFJlX2MiLCJjdXN0b21lclN0YXR1cyI6IkFjdGl2ZSIsImF6cCI6ImR0dmdvIiwiZmFtaWx5TmFtZSI6IlNBWUVTIiwiYXV0aF90aW1lIjoxNzAxODA1OTA3LCJjdXN0b21lcklkIjoiMjM3MjgxODYiLCJleHAiOjE3MDIyOTU4NTQsImlhdCI6MTcwMjEzMDI1NCwiY3VzdG9tZXJTdGF0dXNNZXNzYWdlIjoiMTAwMSIsImlic0FjY291bnRTdGF0dXMiOiJBQ1RJVkUiLCJnaXZlbk5hbWUiOiJQQUJMTyBBTEVYSSIsInNlcnZpY2VQcm92aWRlckFjY291bnRJZCI6IjU4MGVkZWNmLWVhN2QtNDY2Ni1hNDI5LTQwZmVjY2E3MmM1YiIsInZyaW9EZXZpY2VJZCI6ImRhYmFlY2YwLTAxNTMtNDQzMy04YzhlLWM3MWFjZTdlNGFlOCIsImF1ZCI6ImR0dmdvIiwiQ0IxIjpmYWxzZSwiY2hhbm5lbHMiOlsiQ0gwMTAwMDAwMDAwMDE5IiwiQ0gwMTAwMDAwMDAwMTY3IiwiQ0gwMTAwMDAwMDAwMDc2IiwiQ0gwMTAwMDAwMDAwMTA3IiwiQ0gwMTAwMDAwMDAwMjAyIiwiQ0gwMTAwMDAwMDAwMDI2IiwiQ0gwMTAwMDAwMDAwMTY5IiwiQ0gwMTAwMDAwMDAwMTUxIiwiQ0gwMTAwMDAwMDAwMjE2IiwiQ0gwMTAwMDAwMDAwMjA5IiwiQ0gwMTAwMDAwMDAwMDc1IiwiQ0gwMTAwMDAwMDAwMjk1IiwiQ0gwMTAwMDAwMDAwMjkzIiwiQ0gwMTAwMDAwMDAwMDM5IiwiQ0gwMTAwMDAwMDAwMDg3IiwiQ0gwMTAwMDAwMDAwMjI5IiwiQ0gwMTAwMDAwMDAwMDE4IiwiQ0gwMTAwMDAwMDAwMDY4IiwiQ0gwMTAwMDAwMDAwMDM4IiwiQ0gwMTAwMDAwMDAwMDIwIiwiQ0gwMTAwMDAwMDAwMDE1IiwiQ0gwMTAwMDAwMDAwMTQyIiwiQ0gwMTAwMDAwMDAwMTQwIiwiQ0gwMTAwMDAwMDAwMTcxIiwiQ0gwMTAwMDAwMDAwMTE3IiwiQ0gwMTAwMDAwMDAwMDY1IiwiQ0gwMTAwMDAwMDAwMDQ2IiwiQ0gwMTAwMDAwMDAwMjM1IiwiQ0gwMTAwMDAwMDAwMjg2IiwiQ0gwMTAwMDAwMDAwMjMwIiwiQ0gwMTAwMDAwMDAwMjkyIiwiQ0gwMTAwMDAwMDAwMDUxIiwiQ0gwMTAwMDAwMDAwMTM5IiwiQ0gwMTAwMDAwMDAwMjAzIiwiQ0gwMTAwMDAwMDAwMDUwIiwiQ0gwMTAwMDAwMDAwMDc0IiwiQ0gwMTAwMDAwMDAwMTE4IiwiQ0gwMTAwMDAwMDAwMDE2IiwiQ0gwMTAwMDAwMDAwMTYxIiwiQ0gwMTAwMDAwMDAwMTYzIiwiQ0gwMTAwMDAwMDAwMDEwIiwiQ0gwMTAwMDAwMDAwMDM2IiwiQ0gwMTAwMDAwMDAwMjE0IiwiQ0gwMTAwMDAwMDAwMTYyIiwiQ0gwMTAwMDAwMDAwMjcxIiwiQ0gwMTAwMDAwMDAwMTc3IiwiQ0gwMTAwMDAwMDAwMDgwIiwiQ0gwMTAwMDAwMDAwMDY0IiwiQ0gwMTAwMDAwMDAwMDk0IiwiQ0gwMTAwMDAwMDAwMDg2IiwiQ0gwMTAwMDAwMDAwMTA0IiwiQ0gwMTAwMDAwMDAwMTQ4IiwiQ0gwMTAwMDAwMDAwMTE2IiwiQ0gwMTAwMDAwMDAwMTg2IiwiQ0gwMTAwMDAwMDAwMjE1IiwiQ0gwMTAwMDAwMDAwMjIzIiwiQ0gwMTAwMDAwMDAwMjI1IiwiQ0gwMTAwMDAwMDAwMjQ3IiwiQ0gwMTAwMDAwMDAwMjQ5IiwiQ0gwMTAwMDAwMDAwMjU5IiwiQ0gwMTAwMDAwMDAwMDIxIiwiQ0gwMTAwMDAwMDAwMTI4IiwiQ0gwMTAwMDAwMDAwMDM3IiwiQ0gwMTAwMDAwMDAwMjY4IiwiQ0gwMTAwMDAwMDAwMjM2IiwiQ0gwMTAwMDAwMDAwMjQ2IiwiQ0gwMTAwMDAwMDAwMDMwIiwiQ0gwMTAwMDAwMDAwMTQ2IiwiQ0gwMTAwMDAwMDAwMTUyIiwiQ0gwMTAwMDAwMDAwMTU1IiwiQ0gwMTAwMDAwMDAwMTE1IiwiQ0gwMTAwMDAwMDAwMDMxIiwiQ0gwMTAwMDAwMDAwMTk0IiwiQ0gwMTAwMDAwMDAwMjExIiwiQ0gwMTAwMDAwMDAwMjY5IiwiQ0gwMTAwMDAwMDAwMjYzIiwiQ0gwMTAwMDAwMDAwMDk4IiwiQ0gwMTAwMDAwMDAwMjA3IiwiQ0gwMTAwMDAwMDAwMDUzIiwiQ0gwMTAwMDAwMDAwMDQ0IiwiQ0gwMTAwMDAwMDAwMDQwIiwiQ0gwMTAwMDAwMDAwMTgyIiwiQ0gwMTAwMDAwMDAwMDQ4IiwiQ0gwMTAwMDAwMDAwMjA1IiwiQ0gwMTAwMDAwMDAwMjcwIiwiQ0gwMTAwMDAwMDAwMjY3IiwiQ0gwMTAwMDAwMDAwMDUyIiwiQ0gwMTAwMDAwMDAwMDkzIiwiQ0gwMTAwMDAwMDAwMjIyIiwiQ0gwMTAwMDAwMDAwMDcwIiwiQ0gwMTAwMDAwMDAwMjM5IiwiQ0gwMTAwMDAwMDAwMDcxIiwiQ0gwMTAwMDAwMDAwMDg1IiwiQ0gwMTAwMDAwMDAwMDg5IiwiQ0gwMTAwMDAwMDAwMTkzIiwiQ0gwMTAwMDAwMDAwMDkyIiwiQ0gwMTAwMDAwMDAwMTA2IiwiQ0gwMTAwMDAwMDAwMTExIiwiQ0gwMTAwMDAwMDAwMTEyIiwiQ0gwMTAwMDAwMDAwMTE5IiwiQ0gwMTAwMDAwMDAwMzAyIiwiQ0gwMTAwMDAwMDAwMTQxIiwiQ0gwMTAwMDAwMDAwMjgxIiwiQ0gwMTAwMDAwMDAwMTMxIiwiQ0gwMTAwMDAwMDAwMjgzIiwiQ0gwMTAwMDAwMDAwMjk4IiwiQ0gwMTAwMDAwMDAwMjEwIiwiQ0gwMTAwMDAwMDAwMjA4IiwiQ0gwMTAwMDAwMDAwMjI2IiwiQ0gwMTAwMDAwMDAwMjM4IiwiQ0gwMTAwMDAwMDAwMjczIiwiQ0gwMTAwMDAwMDAwMjc2IiwiQ0gwMTAwMDAwMDAwMzEyIiwiQ0gwMTAwMDAwMDAwMzEzIiwiQ0gwMTAwMDAwMDAwMzE1IiwiQ0gwMTAwMDAwMDAwMzE2IiwiQ0gwMTAwMDAwMDAwMzE3IiwiQ0gwMTAwMDAwMDAwMzMwIiwiQ0gwMTAwMDAwMDAwMzMxIiwiQ0gwMTAwMDAwMDAwMzM0IiwiQ0gwMTAwMDAwMDAwMzM1IiwiQ0gwMTAwMDAwMDAwMzM2IiwiQ0gwMTAwMDAwMDAwMzM3IiwiQ0gwMTAwMDAwMDAwMzQyIiwiQ0gwMTAwMDAwMDAwMzQwIiwiQ0gwMTAwMDAwMDAwMzQxIiwiQ0gwMTAwMDAwMDAwMzQzIl0sInZyaW9DdXN0b21lcklkIjoiNTgwZWRlY2YtZWE3ZC00NjY2LWE0MjktNDBmZWNjYTcyYzViIiwibmFtZSI6IlBBQkxPIEFMRVhJIFNBWUVTIiwicmVhbG0iOiIvc3NsYSIsImNzbSI6IjIiLCJ0b2tlblR5cGUiOiJKV1RUb2tlbiJ9.B_EaRzff7QasynBND_KUjh1Bpq1ING6R_Y0EbWB8PeD-B3M3KwL0jn-TaFlzL6sHm7GLLBWOdf8rX9sAXArXzltRUOtmxaaKeNag0LfozMCut78NbpbfolC_40VPKxbW72abHNx1hldja24oZu8DVj904tX-J6KdOrU5lXHIswu7MvhJrDw8KJNFX79OYiRlDOvSK5Hp3ebW_SgVhYbQ7JgpsP5kWUOyD5xBKBpw0QSi-ut54G1AfhL5RqEogHmxZmPg3cu9u7hgEv5feVW_mfkuOVeVuLRQCznkybPRQrMAeNcABB5GkFuI9mU0hcgckhN8OtaXMf7pGC0XGM6_Hg";
+    let chid = "CH0100000000341"; 
+    let keyId = "de7d7ded48b437d691966acdc8a97262"; 
+    let key = "c1696c67cf7a678932d33340135ea82b"; 
+
+    // Obtener el token de autorización 
+    fetch("https://api.directvgo.com/entitlement/v3/playback/token/authorizer", { 
+      method: "POST", 
+      headers: { 
+        "Authorization": "Bearer " + token, 
+        "Content-Type": "application/json", 
+        "X-Client-Id": "web", 
+        "X-Client-Version": "3.17.0" 
+      }, 
+      body: JSON.stringify({ 
+        contentId: chid, 
+        delay: 0, 
+        isLive: true, 
+        mobileNetwork: true 
+      }) 
+    }) 
+      .then(response => response.json()) 
+      .then(data => { 
+        if (data.manifest && data.manifest.dash && data.manifest.dash.primary) { 
+          let manifestUrl = data.manifest.dash.primary; 
+
+          // Realizar solicitud para obtener hdntl 
+          fetch(manifestUrl) 
+            .then(response => { 
+              if (!response.ok) { 
+                throw new Error('HTTP error! status: ' + response.status); 
+              } 
+              const hdntl = response.headers.get('hdntl'); 
+              if (hdntl) { 
+                // hdntl está disponible, puedes usarlo según sea necesario 
+                console.log('hdntl:', hdntl); 
+
+                // Configurar JWPlayer con clearkey y hdntl 
+                let player = jwplayer("player"); 
+                player.setup({ 
+                  playlist: [{ 
+                    sources: [{ 
+                      default: false, 
+                      type: "dash", 
+                      file: manifestUrl, 
+                      drm: { 
+                        clearkey: { 
+                          keyId: keyId, 
+                          key: key 
+                        } 
+                      }, 
+                      label: "0", 
+                      // Agregar encabezado "Hdntl" a la solicitud de audio 
+                      onXhrOpen: function (xhr, url) { 
+                        if (!url.includes("manifest.mpd")) { 
+                          xhr.setRequestHeader("Hdntl", hdntl); 
+                        } 
+                      } 
+                    }] 
+                  }], 
+                  width: "100%", 
+                  height: "100%", 
+                  aspectratio: "16:9", 
+                  autostart: true, 
+                  cast: {}, 
+                  sharing: false 
+                }); 
+              } else { 
+                console.log('Header "hdntl" not found in the response.'); 
+              } 
+              return response.text(); 
+            }) 
+            .catch(error => console.error('Error fetching MPD:', error)); 
+
+        } else { 
+          console.error("Dash primary URL not found in the response."); 
+        } 
+      }) 
+      .catch(error => console.error("Error fetching authorization token:", error)); 
+  
+ 
+ 
+ </script>
+
+
+
+
+
+ 
+</body></html>
