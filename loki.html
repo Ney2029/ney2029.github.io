@@ -1,0 +1,101 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <title>.</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+  <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
+  <script data-cfasync="false" src="//achcdn.com/script/suv4.js" data-adel="lwsu" cdnd="achcdn.com" zid="7692102"></script>
+</head>
+<body>
+  <div id="player"></div>
+
+  <script>
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkIjoiNzMwNDdhYzItMzBiNi00MDE2LWJlY2ItNGU0M2JjZmUzMjk0IiwiaXAiOiIxODEuMjA5Ljc1LjE1NiIsIm52YSI6IjIwMjQtMDEtMDlUMTM6Mzk6NTguNjY4WiIsImdlb2MiOiJNWCIsImNvbnRlbnRJZCI6IkxpdmVfMTI4MiIsInNlc3Npb25JZCI6IjkxY2VlZDIzLTg0YjgtNGZmMi05ZTVjLTgyOGFlNmE1ZWM2YSIsInZyaW9DdXN0b21lcklkIjoiMWJkMzg0MjItNDhiOC01MDhjLThmYjEtOWRkZjRmZmQyNTQ5IiwibGljZW5zZVJlbmV3QWN0aXZlIjp0cnVlLCJpYXQiOjE3MDQ4MDAzOTgsImV4cCI6MTcwNDgwNzU5OH0.h0ikml028SWYEtXlv2ORagaoe-fqlX8rPvgrUG-vEK8";
+
+    // Obtener el valor del parámetro 'id' de la URL utilizando la función getParameterByName
+    var channelId = getParameterByName('id');
+
+    // Definir información para diferentes canales
+    let channelInfo = {
+      "GH": {
+        chid: "CH0100000000341",
+        keyId: "de7d7ded48b437d691966acdc8a97262",
+        key: "c1696c67cf7a678932d33340135ea82b"
+      },
+      "GHCAMARA1": {
+        chid: "CH0100000000342",
+        keyId: "9551559085843488876b472cd5416000",
+        key: "a7dbd673c51a4c73522e7d1a240fa7bc"
+      },
+
+      "GHCAMARA2": {
+        chid: "CH0100000000343",
+        keyId: "206ba28f691f34f88d8886cc42702c4c",
+        key: "7830b692416a413e1f31fb81a3bdf752"
+      },
+
+      "GHCAMARA3": {
+        chid: "CH0100000000340",
+        keyId: "cd9941e77fc63100986acdcb6bcba661",
+        key: "dc9b59d9a8397b756bdd2607c7614476"
+      },
+    };
+
+    // Obtener la información del canal actual
+    let currentChannel = channelInfo[channelId];
+
+    // Verificar si se encontró información para el canal actual
+    if (currentChannel) {
+      fetchAuthorizationToken(token, currentChannel);
+    } else {
+      console.error("No se encontró información para el canal especificado en la URL.");
+    }
+
+    function fetchAuthorizationToken(token, channel) {
+      // Asegúrate de que channel esté definido y tenga keyId y key
+      if (channel && channel.keyId && channel.key) {
+        // Crear un elemento de script dinámicamente
+        var script = document.createElement('script');
+
+        // Generar un nombre de función única para el callback
+        var callbackName = 'jsonpCallback_' + Date.now();
+        window[callbackName] = function (data) {
+          handleJSONP(data);
+          // Limpiar la función callback después de su uso
+          delete window[callbackName];
+          document.body.removeChild(script);
+        };
+
+        // Especificar la URL de la solicitud JSONP (incluyendo el callback)
+        script.src = `https://api.directvgo.com/entitlement/v3/playback/token/authorizer?callback=${callbackName}&contentId=${channel.chid}&delay=0&isLive=true&mobileNetwork=true`;
+        
+        // Agregar el script a la página
+        document.body.appendChild(script);
+      } else {
+        console.error("Información incompleta para el canal actual.");
+      }
+    }
+
+    // Función de manejo de datos
+    function handleJSONP(response) {
+      console.log(response);
+      // Puedes procesar los datos recibidos aquí
+    }
+
+    // Función getParameterByName
+    function getParameterByName(name) {
+      name = name.replace(/[\[]/, "\[").replace(/[\]]/, "\]");
+      var regex = new RegExp("[\?&]" + name + "=([^&#]*)"),
+          results = regex.exec(location.search);
+      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+  </script>
+</body>
+</html>
