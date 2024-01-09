@@ -17,7 +17,7 @@
   <div id="player"></div>
 
   <script>
-    let token = "eyJ0eXAiOiJKV1QiLCJraWQiOiJ3VTNpZklJYUxPVUFSZVJCL0ZHNmVNMVAxUU09IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiQk40SUFBTWY5c08zc2VQTmU4Y1pMQSIsInN1YiI6ImNvcm9uZWxzNTU4QGdtYWlsLmNvbSIsImJ1c2luZXNzVW5pdCI6IlNTTEEtT1RUIiwicmVnaW9ucyI6WyI4MGJiMDYxMC1mZWE5LTExZWEtYTE5MC0wYjBkNzhkOTI5NjYiLCJmOTE3Y2ZmNi0wMjVhLTQ5MTctODRkNi1mYjY4NjY5N2Q5M2MiLCIyZTE2NzIzNy1jN2JiLTQyM2ItYjYwNi1jMzExMTVhZGIxZGEiXSwiYXVkaXRUcmFja2luZ0lkIjoiOTEzZTUzMGYtYjMxNC00MWY2LTllYTQtZjY3NGZmMmRlNzZiLTQyOTQ5MjkwIiwiaXNvMkNvZGUiOiJNWCIsImlzcyI6Imh0dHBzOi8vcHJvZHJvY2suZGlyZWN0dmdvLmNvbTo0NDMvb3BlbmFtL29hdXRoMi9yZWFsbXMvcm9vdC9yZWFsbXMvc3NsYSIsInRva2VuTmFtZSI6ImlkX3Rva2VuIiwiZGV2aWNlSWQiOiI3d1k5VDdTbklzeE8ydEFMRnlIQkRNd3JiVThPTkNlWl9STVRxbUJmRXBVIiwiY3VzdG9tZXJTdGF0dXMiOiJBY3RpdmUiLCJhenAiOiJkdHZnbyIsImZhbWlseU5hbWUiOiJDT1JPTkVMIiwiYXV0aF90aW1lIjoxNzA0NDM2MTMxLCJjdXN0b21lcklkIjoiMWJkMzg0MjItNDhiOC01MDhjLThmYjEtOWRkZjRmZmQyNTQ5IiwiZXhwIjoxNzA0OTI5MDYyLCJpYXQiOjE3MDQ3NjM0NjIsImdpdmVuTmFtZSI6ImpFU1VTIiwidnJpb0RldmljZUlkIjoiNzMwNDdhYzItMzBiNi00MDE2LWJlY2ItNGU0M2JjZmUzMjk0IiwiYXVkIjoiZHR2Z28iLCJDQjEiOmZhbHNlLCJjaGFubmVscyI6WyJDSDAxMDAwMDAwMDAxMjgiLCJDSDAxMDAwMDAwMDAzMTUiLCJDSDAxMDAwMDAwMDAzMzEiLCJDSDAxMDAwMDAwMDAzNDEiXSwidnJpb0N1c3RvbWVySWQiOiIxYmQzODQyMi00OGI4LTUwOGMtOGZiMS05ZGRmNGZmZDI1NDkiLCJuYW1lIjoiakVTVVMgQ09ST05FTCIsInJlYWxtIjoiL3NzbGEiLCJjc20iOiIyIiwidG9rZW5UeXBlIjoiSldUVG9rZW4ifQ.qEi6Fv5asEASyCjvqfW6lmrAZvc5X_2TEYskdQIDVSqSbqTQSf_3ljGinxGJFZO96-0CyU-B-6reCUKYqmoeIhnNDkORc97QLa6SuUpk3_UQ7B2BILyl5mdZceuMAvBWH3zUZUWI7DTEPW5oU4V0UHZEFSJrIgWR3UbXqa9M1PdKrWHsUDIgdSGy-qu5QyS6Qg5q3-S5_RnqDVQCm7bHyMSWUlHLvyuwWjIUG7nXy9haJ7_EckIiE7Bf5OZBY0K0xdV6wQVoT1Qq65J2ga0xb5hf7Xjt48S1QhXUwJDNwAQeYKoLqQVmrsooaaMJgYjNHYMSjlcYcyUaIgNnQtBkEQ";
+    let token = "tu_token_aqui";
 
     // Obtener el valor del parámetro 'id' de la URL utilizando la función getParameterByName
     var channelId = getParameterByName('id');
@@ -34,13 +34,11 @@
         keyId: "9551559085843488876b472cd5416000",
         key: "a7dbd673c51a4c73522e7d1a240fa7bc"
       },
-
       "GHCAMARA2": {
         chid: "CH0100000000343",
         keyId: "206ba28f691f34f88d8886cc42702c4c",
         key: "7830b692416a413e1f31fb81a3bdf752"
       },
-
       "GHCAMARA3": {
         chid: "CH0100000000340",
         keyId: "cd9941e77fc63100986acdcb6bcba661",
@@ -86,7 +84,36 @@
     // Función de manejo de datos
     function handleJSONP(response) {
       console.log(response);
-      // Puedes procesar los datos recibidos aquí
+
+      // Configurar JWPlayer con clearkey y hdntl
+      let player = jwplayer("player");
+      player.setup({
+        playlist: [{
+          sources: [{
+            default: false,
+            type: "dash",
+            file: response.manifest.dash.primary,
+            drm: {
+              clearkey: {
+                keyId: response.keyId,
+                key: response.key
+              }
+            },
+            label: "0",
+            onXhrOpen: function (xhr, url) {
+              if (!url.includes("manifest.mpd")) {
+                xhr.setRequestHeader("Hdntl", response.hdntl);
+              }
+            }
+          }]
+        }],
+        width: "100%",
+        height: "100%",
+        aspectratio: "16:9",
+        autostart: false,
+        cast: {},
+        sharing: false
+      });
     }
 
     // Función getParameterByName
