@@ -892,7 +892,7 @@ if (getURL !== undefined && getURL !== null) {
         var redirectUrl = '/cvatt.html?get=' + getURL;
 
         if (getLang) {
-            redirectUrl += '&lang=' + getLang;
+            redirectUrl += '&lang=1';
         }
 
         redirectUrl += '&start=true';
@@ -905,8 +905,9 @@ if (getURL !== undefined && getURL !== null) {
 }
 
 	
-var selectedLanguage = 1;
-var selectedLanguage2 = 0;
+var getLang = getParameterByName('lang');
+var selectedLanguage = getLang;
+var selectedLanguage2 = 1;  
 var languageChangedDuringPlay = false;
 
 jwplayer().on('play', function(e) {
@@ -915,7 +916,7 @@ jwplayer().on('play', function(e) {
 
     if (currentLanguage !== selectedLanguage && currentLanguage !== selectedLanguage2) {
       jwplayer().setCurrentAudioTrack(selectedLanguage);
-      languageChangedDuringPlay = true; 
+      languageChangedDuringPlay = true;
     }
   }
 });
@@ -923,7 +924,6 @@ jwplayer().on('play', function(e) {
 jwplayer().on('complete', function(e) {
   languageChangedDuringPlay = false;
 });
-
 
 
 
