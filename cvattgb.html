@@ -891,8 +891,8 @@ if (getURL !== undefined && getURL !== null) {
     playerInstance.on("error", function() {
         var redirectUrl = '/cvatt.html?get=' + getURL;
 
-        if (getLang) {
-            redirectUrl += '&lang=1';
+         if (getLang) {
+            redirectUrl += '&lang=' + getLang;
         }
 
         redirectUrl += '&start=true';
