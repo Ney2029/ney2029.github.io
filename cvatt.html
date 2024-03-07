@@ -67,7 +67,7 @@ console.log("Selected mt:", mt[random]);
 async function testSubdomains() {
   for (let i = 0; i < mt.length; i++) {
     let subdomain = mt[i];
-    let mpdURL = "//" + subdomain + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc_wl/" + atob(getURL) + ".mpd";
+    let mpdURL = "//" + subdomain + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
 
     try {
       await testMpdURL(mpdURL);
@@ -99,7 +99,7 @@ testSubdomains();
 var mpd = "//" + mt[random] + ".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc";
 
 if (getURL == "Rm94X1Nwb3J0c19QcmVtaXVuX0hE" || getURL == "VE5UX1Nwb3J0c19IRA")
-	mpd += "_wl"; 
+	mpd += ""; //_wl _2A
 	mpd += "/"+atob(getURL)+".mpd";
 var mpd2 = "//" + mt[random] +".cvattv.com.ar/live/c3eds/Eventos1HD/SA_Live_dash_enc/Eventos1HD.mpd";
 if (getURL == "RVNQTjJIRA")
