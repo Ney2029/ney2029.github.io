@@ -67,7 +67,7 @@ console.log("Selected mt:", mt[random]);
 async function testSubdomains() {
   for (let i = 0; i < mt.length; i++) {
     let subdomain = mt[i];
-    let mpdURL = "//" + subdomain + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc_wl/" + atob(getURL) + ".mpd";
+    let mpdURL = "//" + subdomain + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
 
     try {
       await testMpdURL(mpdURL);
