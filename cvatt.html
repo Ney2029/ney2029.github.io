@@ -952,6 +952,23 @@ if (getURL !== undefined && getURL !== null) {
 
 	
 }
+	
+if (getURL == "Rm94X1Nwb3J0c19QcmVtaXVuX0hE" || getURL == "VE5UX1Nwb3J0c19IRA") {
+    playerInstance.on("error", function() {
+        var redirectUrl = '/cvatt2.html?get=' + getURL;
+
+        if (getLang) {
+            redirectUrl += '&lang=' + getLang;
+        }
+
+        redirectUrl += '&start=true';
+
+        window.location = redirectUrl;
+    });
+}
+
+	
+}
 
 	
 var getLang = getParameterByName('lang');
