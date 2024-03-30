@@ -106,7 +106,7 @@ function testMpdURL(url) {
 }
 testSubdomains();*/
 
-var mpd = "//" + mt[random] + ".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc_wl";
+var mpd = "//" + mt[random] + ".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc";
 
 if (getURL == "Rm94X1Nwb3J0c19QcmVtaXVuX0hE" || getURL == "VE5UX1Nwb3J0c19IRA")
 	mpd += ""; //_wl _2A
@@ -981,7 +981,7 @@ playerInstance.setup({
 
 if (getURL !== undefined && getURL !== null) {
     playerInstance.on("error", function() {
-        var redirectUrl = '/cvatt2.html?get=' + getURL;
+        var redirectUrl = '/cvatt.html?get=' + getURL;
 
         if (getLang) {
             redirectUrl += '&lang=' + getLang;
