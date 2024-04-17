@@ -983,7 +983,7 @@ if (getURL !== undefined && getURL !== null) {
     
     var errorCount = sessionStorage.getItem('errorCount');
     if (!errorCount) {
-        errorCount = 0;
+        errorCount = 10;
     } else {
         errorCount = parseInt(errorCount);
     }
