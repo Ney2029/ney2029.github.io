@@ -983,7 +983,7 @@ if (getURL !== undefined && getURL !== null) {
     
     var errorCount = sessionStorage.getItem('errorCount');
     if (!errorCount) {
-        errorCount = 10;
+        errorCount = 0;
     } else {
         errorCount = parseInt(errorCount);
     }
@@ -991,7 +991,7 @@ if (getURL !== undefined && getURL !== null) {
     playerInstance.on("error", function() {
         errorCount++;
 
-        if (errorCount >= 0) {
+        if (errorCount >= 10) {
             var redirectUrl = '/cvatt1.html?get=' + getURL;
         } else {
             var redirectUrl = '/cvatt.html?get=' + getURL;
