@@ -1080,28 +1080,7 @@ else if (getURL == "VE5UX1Nwb3J0c19IRA")
 }
 
 	
-var getLang = getParameterByName('lang');
-var selectedLanguage = getLang;
-var selectedLanguage2 = 1;  
-var languageChangedDuringPlay = false;
-
-jwplayer().on('play', function(e) {
-  if (!languageChangedDuringPlay) {
-    var currentLanguage = jwplayer().getCurrentAudioTrack();
-
-    if (currentLanguage !== selectedLanguage && currentLanguage !== selectedLanguage2) {
-      jwplayer().setCurrentAudioTrack(selectedLanguage);
-      languageChangedDuringPlay = true;
-    }
-  }
-});
-
-jwplayer().on('complete', function(e) {
-  languageChangedDuringPlay = false;
-});
-
-
- if (getURL == "VGVsZWZlSEQ=")
+else if (getURL == "VGVsZWZlSEQ=")
 {
 	playerInstance.on("error", function() {
 		var playerInstance= jwplayer("player");
@@ -1129,6 +1108,29 @@ jwplayer().on('complete', function(e) {
 }
 
 
+	
+var getLang = getParameterByName('lang');
+var selectedLanguage = getLang;
+var selectedLanguage2 = 1;  
+var languageChangedDuringPlay = false;
+
+jwplayer().on('play', function(e) {
+  if (!languageChangedDuringPlay) {
+    var currentLanguage = jwplayer().getCurrentAudioTrack();
+
+    if (currentLanguage !== selectedLanguage && currentLanguage !== selectedLanguage2) {
+      jwplayer().setCurrentAudioTrack(selectedLanguage);
+      languageChangedDuringPlay = true;
+    }
+  }
+});
+
+jwplayer().on('complete', function(e) {
+  languageChangedDuringPlay = false;
+});
+
+
+ 
 
 
 
