@@ -637,7 +637,7 @@ else if (getURL == "QXJ0ZWFySEQ")
 }
 else if (getURL == "VGVsZWZlSEQ=")
 {
-        keyId = "3cec1b1ea9799dda5596e64f37e5ed21";
+        keyId = "3cec1b1ea9799dda5596e64f37e5ed20";
         key = "c69f3afde2085dcaaaddbf55246a0323";
 }
 else if (getURL == "QW1lcmljYTI0")
@@ -1078,35 +1078,6 @@ else if (getURL == "VE5UX1Nwb3J0c19IRA")
         window.location = redirectUrl;
 	});
 }
-
-	
-else if (getURL == "VGVsZWZlSEQ=")
-{
-	playerInstance.on("error", function() {
-		var playerInstance= jwplayer("player");
-		var ghttp = new XMLHttpRequest();
-		ghttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var jsonResponse = JSON.parse(ghttp.responseText);
-				var m3u8 = jsonResponse['url'];
-				playerInstance.setup({
-					file: m3u8,
-					type: "hls",
-					withCredentials: true,
-					width: "100%",
-					height: "100%",
-					aspectratio: "16:9",
-					autostart: true,
-					cast: {},
-					sharing: {}
-				});
-			}
-		}
-		ghttp.open("GET", "https://api.codetabs.com/v1/proxy/?quest=https://librefutboltv.net/json/telefe.json", true);
-		ghttp.send();
-	});
-}
-
 
 	
 var getLang = getParameterByName('lang');
