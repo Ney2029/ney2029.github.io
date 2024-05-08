@@ -18,11 +18,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src='https://content.jwplatform.com/libraries/KB5zFt7A.js'></script>
     <script>
-        $(document).ready(function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const eventId = urlParams.get('id');
-            const eventImg = urlParams.get('img');
-
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\[").replace(/[\]]/, "\]");
+	var regex = new RegExp("[\?&]" + name + "=([^&#]*)"),
+	results = regex.exec(location.search);
+	return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+var eventId = getParameterByName('id');
             function setupPlayer() {
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'https://corsproxy.io/?url=https://librefutboltv.net/json/' + eventId + '.json?' + Math.random().toString(36).substring(7), true);
@@ -38,7 +40,7 @@
                                 image: eventImg,
                                 sources: [{
                                     default: false,
-                                    file: atob(data.hls),
+                                    file: atob(eventId),
                                     label: "0",
                                     type: "hls"
                                 }],
