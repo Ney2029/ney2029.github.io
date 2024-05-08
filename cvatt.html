@@ -1045,33 +1045,6 @@ if (getURL !== undefined && getURL !== null) {
         window.location = redirectUrl;
     });
 }
-
-if (getURL == "Rm94X1Nwb3J0c19QcmVtaXVuX0hE")
-{
-	playerInstance.on("error", function() {
-var playerInstance= jwplayer("player");
-		var ghttp = new XMLHttpRequest();
-		ghttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var jsonResponse = JSON.parse(ghttp.responseText);
-				var m3u8 = jsonResponse['url'];
-				playerInstance.setup({
-					file: m3u8,
-					type: "hls",
-					withCredentials: true,
-					width: "100%",
-					height: "100%",
-					aspectratio: "16:9",
-					autostart: true,
-					cast: {},
-					sharing: {}
-				});
-			}
-		}
-		ghttp.open("GET", "https://librefutboltv.net/json/telefe.json", true);
-		ghttp.send();
-	});
-}
 	
 if (getURL == "Rm94X1Nwb3J0c19QcmVtaXVuX0hE")
 {
