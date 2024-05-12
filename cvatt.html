@@ -81,7 +81,7 @@ else
 var random = Math.floor(Math.random() * mt.length)	
 console.log("Selected mt:", mt[random]);
 	
-async function testSubdomains() {
+/*async function testSubdomains() {
   for (let i = 0; i < mt.length; i++) {
     let subdomain = mt[i];
     let mpdURL = "//" + subdomain + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
@@ -111,7 +111,7 @@ function testMpdURL(url) {
     xhr.send();
   });
 }
-testSubdomains();
+testSubdomains();*/
 
 	
 var mpd = "//" + mt[random] +".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
@@ -1029,7 +1029,7 @@ if (getURL !== undefined && getURL !== null) {
         errorCount++;
 
         if (errorCount >= 10) {
-            var redirectUrl = '/cvatt.html?get=' + getURL;
+            var redirectUrl = '/cvatt3.html?get=' + getURL;
         } else {
             var redirectUrl = '/cvatt.html?get=' + getURL;
         }
