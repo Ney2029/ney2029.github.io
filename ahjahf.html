@@ -62,7 +62,30 @@ else
 number = 3;
 
 	
-var mpd = "//" + mt[random] +".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
+var mt = ["edge-live01-mun", "edge-live02-mun", "edge-live01-bel", "edge-live02-bel", "edge-live11-hr", "edge-live12-hr", "edge-live13-hr"];
+var mpd;
+var bestStatus = 999; // Inicializar con un código de estado alto
+
+// Iterar sobre cada dominio y comprobar su estado
+mt.forEach(function(domain) {
+    var url = "//" + domain + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
+
+    // Realizar una solicitud de prueba para obtener el estado
+    fetch(url, { method: 'HEAD' })
+        .then(function(response) {
+            // Si el estado es mejor que el mejor actual, actualizar mpd y bestStatus
+            if (response.ok && response.status < bestStatus) {
+                mpd = url;
+                bestStatus = response.status;
+            }
+        })
+        .catch(function(error) {
+            console.error('Error al obtener el estado de ' + url, error);
+        });
+});
+
+// Aquí mpd contendrá el MPD del dominio con el mejor estado
+console.log('Mejor MPD:', mpd);
 
 var mpd2 = "//" + mt[random] +".cvattv.com.ar/live/c3eds/Eventos1HD/SA_Live_dash_enc/Eventos1HD.mpd";
 if (getURL == "RVNQTjJIRA")
@@ -940,14 +963,14 @@ else
 
 var start = getParameterByName('start');
 var autostart = start !== undefined && start === "true";
- tryMPD(mt, 0, function(validMPD) {
+
 playerInstance.setup({
     playlist: [{
         "sources": [
             {
                 "default": false,
                 "type": "dash",
-                "file": validMPD,
+                "file": mpd,
                 "drm": {
                     "clearkey": { "keyId": keyId, "key": key }
                 },
@@ -962,7 +985,6 @@ playerInstance.setup({
     cast: {},
     sharing: {}
 });
-}
 	
 if (getURL !== undefined && getURL !== null) {
     
