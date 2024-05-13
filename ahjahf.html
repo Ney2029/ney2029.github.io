@@ -916,7 +916,7 @@ if (getURL == "RXZlbnRvczFIRA")
 {
 	playerInstance.setup({
 		"type": "dash",
-		"file": mpd2,
+		"file": bestMpdURL,
 		"drm": {
                             "clearkey": {
                                 "keyId": "5c86e237317c2231ac1bc130e995fad6",
@@ -940,26 +940,26 @@ var start = getParameterByName('start');
 var autostart = start !== undefined && start === "true";
 
 var mt = ["edge-live01-mun", "edge-live02-mun", "edge-live01-bel", "edge-live02-bel", "edge-live11-hr", "edge-live12-hr", "edge-live13-hr"];
-var bestMpdURL;
 
 async function testSubdomains() {
-    let bestStatus = 999; // Inicializar con un código de estado alto
-
     for (let i = 0; i < mt.length; i++) {
         let subdomain = mt[i];
         let mpdURL = "//" + subdomain + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
 
         try {
             let status = await testMpdURL(mpdURL);
-            if (status < bestStatus) {
-                bestStatus = status;
-                bestMpdURL = mpdURL;
+            if (status === 200) {
+                console.log("MPD URL found:", mpdURL);
+                return mpdURL; // Devolvemos el MPD URL tan pronto como lo encontramos
+            } else {
+                console.log("MPD URL", mpdURL, "returned status", status);
             }
-            console.log("Subdomain", subdomain, "is working with status", status);
         } catch (error) {
-            console.error("Subdomain", subdomain, "is not working. Error:", error.message);
+            console.error("Error testing MPD URL", mpdURL, ":", error.message);
         }
     }
+
+    throw new Error("No MPD URL found with status 200 OK");
 }
 
 function testMpdURL(url) {
@@ -967,11 +967,7 @@ function testMpdURL(url) {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    resolve(xhr.status);
-                } else {
-                    reject(new Error("HTTP request failed with status " + xhr.status));
-                }
+                resolve(xhr.status); // Devolvemos el estado de la solicitud
             }
         };
         xhr.open("GET", url, true);
@@ -980,7 +976,7 @@ function testMpdURL(url) {
 }
 
 testSubdomains()
-    .then(() => {
+    .then((bestMpdURL) => {
         console.log("Best MPD URL:", bestMpdURL);
 
         // Ahora puedes configurar tu playerInstance.setup() con el MPD seleccionado
@@ -1009,6 +1005,7 @@ testSubdomains()
     .catch((error) => {
         console.error("Error:", error.message);
     });
+
 
 	
 if (getURL !== undefined && getURL !== null) {
