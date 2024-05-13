@@ -55,7 +55,7 @@ else if (getURL == "RVNQTjJfQXJn" || getURL == "Q2luZW1heA==" || getURL == "RXZl
 number = 6;
 else if (getURL == "QzlOX0M0")
 number = 5;
-else if (getURL == "RGlzY292ZXJ5SG9tZUhlYWx0aEhE" || getURL == "TmF0R2VvSEQ="  || getURL == "VE5UX0hEX0FyZw=="  || getURL == "VE5UU2VyaWVz" || getURL == "Q2FydG9vbk5ldHdvcms=" || getURL == "Tmlja2Vsb2Rlb24="  || getURL == "QWR1bHRfU3dpbQ==" ) 
+else if (getURL == "RGlzY292ZXJ5SG9tZUhlYWx0aEhE" || getURL == "TmF0R2VvSEQ="  || getURL == "VE5UX0hEX0FyZw=="  || getURL == "VE5UU2VyaWVz" || getURL == "Q2FydG9vbk5ldHdvcms=" || getURL == "Tmlja2Vsb2Rlb24="  || getURL == "QWR1bHRfU3dpbQ=="  || getURL == "RXZlbnRvczFIRA") 
 number = 3;
 else if (getURL == "Q2FuYWxfNV9Sb3Nhcmlv" || getURL == "VEVMRUZVVFVST19DNA==" || getURL == "VGVsZWZlX05ldXF1ZW4=" || getURL == "VGVsZWZlX1NhbHRh" || getURL == "U05UX0M0" || getURL == "UEFSQVZJU0lPTl9DNA==" || getURL == "Tk9USUNJQVNfUFlfQzQ=" || getURL == "Tk9USUNJQVNfUFlfQzQ=" || getURL == "UEFSQVZJU0lPTl9DNA==" || getURL == "TEFfVEVMRV9DNA==" || getURL == "U1VSX1RWX0M0" || getURL == "Q2FuYWwxMlVSVQ=="  || getURL == "RGlzY292ZXJ5SG9tZUhlYWx0aEhE" || getURL == "Q2FuYWw0X1VSVQ==" || getURL == "SEJPSEQ="  || getURL == "Q2FuYWwxMF9VUlU=" || getURL == "UlBDX0M0")
 number = 4;
@@ -912,34 +912,13 @@ else if (getURL == "RXZlbnRvczFIRA")
         keyId = "5c86e237317c2231ac1bc130e995fad6";
         key = "dcacf7b239ee03df3c69ca11dbcde4eb";
 }
-if (getURL == "RXZlbnRvczFIRA")
-{
-	playerInstance.setup({
-		"type": "dash",
-		"file": bestMpdURL,
-		"drm": {
-                            "clearkey": {
-                                "keyId": "5c86e237317c2231ac1bc130e995fad6",
-                                "key": "dcacf7b239ee03df3c69ca11dbcde4eb"
-                            }
-                        },
-		width: "100%",
-		height: "100%",
-		aspectratio: "16:9",
-		autostart: false,
-		cast: {},
-		sharing: {}
-	});
-}
-	
 
-else
-{
+	
 
 var start = getParameterByName('start');
 var autostart = start !== undefined && start === "true";
 
-var mt = ["edge-live01-mun", "edge-live02-mun", "edge-live01-bel", "edge-live02-bel", "edge-live11-hr", "edge-live12-hr", "edge-live13-hr"];
+var mt = [ "edge-live01-mun", "edge-live02-mun", "edge-live01-bel", "edge-live02-bel", "edge-live11-hr", "edge-live12-hr", "edge-live13-hr", "edge-live14-hr", "edge-live15-hr", "edge-live16-hr", "edge-live17-hr", "edge-live31-hr", "edge-live32-hr", "edge-live34-hr", "edge-live11-sl", "edge-live12-sl", "edge-live13-sl", "edge-live15-sl", "edge-live16-sl", "edge-live17-sl", "edge-live31-sl", "edge-live32-sl", "edge-vod02-sl", "edge-vod04-sl", "edge-vod06-sl", "edge9-sl", "edge10-sl", "edge-vod01-hr", "edge-vod02-hr",  "edge-vod03-hr", "edge-vod04-hr", "edge-live01-cen", "edge-live02-cen", "edge-live03-cen", "edge2-ccast-sl", "edge6-ccast-sl", "edge7-ccast-sl",  "edge-mix02-cte",  "edge-live01-cte", "edge-live01-coe", "edge-mix02-coe", "edge-mix03-coe", "edge-mix04-coe", "edge-mix05-coe", "edge-mix01-ird", "edge-mix02-ird", "cdn", "chromecast"];
 
 async function testSubdomains() {
     for (let i = 0; i < mt.length; i++) {
