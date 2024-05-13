@@ -61,38 +61,6 @@ number = 4;
 else
 number = 3;
 
-	var mt = ["//edge6-hr", "//edge7-ccast-sl", "//edge-mix04-coe", "//edge-mix05-coe", "//edge-live01-ros"];
-
-var random = Math.floor(Math.random() * mt.length);
-        var playerInstance = jwplayer("player");
-
-        function tryMPD(mts, index, onValid, onInvalid) {
-            if (index >= mts.length) {
-                onInvalid();
-                return;
-            }
-
-            var mpdURL = mts[index] + atob(getURL);
-            checkMPD(mpdURL, function(isValid) {
-                if (isValid) {
-                    onValid(mpdURL);
-                } else {
-                    tryMPD(mts, index + 1, onValid, onInvalid);
-                }
-            });
-        }
-
-        function checkMPD(url, callback) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    callback(xhr.status === 200);
-                }
-            };
-            xhr.send();
-        }
-
 	
 var mpd = "//" + mt[random] +".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
 
