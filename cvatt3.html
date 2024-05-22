@@ -1028,7 +1028,7 @@ if (getURL !== undefined && getURL !== null) {
     playerInstance.on("error", function() {
         errorCount++;
 
-        if (errorCount >= 10) {
+        if (errorCount >= 1) {
             var redirectUrl = '/cvatt2.html?get=' + getURL;
         } else {
             var redirectUrl = '/cvatt3.html?get=' + getURL;
