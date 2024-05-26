@@ -1020,7 +1020,7 @@ if (getURL !== undefined && getURL !== null) {
     playerInstance.on("error", function() {
         errorCount++;
 
-        if (errorCount >= 3) {
+        if (errorCount >= 1) {
             var redirectUrl = '/mpd.html?get=' + getURL;
         } else {
             var redirectUrl = '/cvatt.html?get=' + getURL;
