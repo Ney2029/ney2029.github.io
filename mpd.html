@@ -929,7 +929,7 @@ async function testSubdomains() {
             let status = await testMpdURL(mpdURL);
             if (status === 200) {
                 console.log("MPD URL found:", mpdURL);
-                return mpdURL; // Devolvemos el MPD URL tan pronto como lo encontramos
+                return mpdURL;
             } else {
                 console.log("MPD URL", mpdURL, "returned status", status);
             }
@@ -946,7 +946,7 @@ function testMpdURL(url) {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
-                resolve(xhr.status); // Devolvemos el estado de la solicitud
+                resolve(xhr.status);
             }
         };
         xhr.open("GET", url, true);
@@ -958,7 +958,6 @@ testSubdomains()
     .then((bestMpdURL) => {
         console.log("Best MPD URL:", bestMpdURL);
 
-        // Ahora puedes configurar tu playerInstance.setup() con el MPD seleccionado
         playerInstance.setup({
             playlist: [{
                 "sources": [
@@ -1002,7 +1001,7 @@ if (getURL !== undefined && getURL !== null) {
         if (errorCount >= 10) {
             var redirectUrl = '/mpd2.html?get=' + getURL;
         } else {
-            var redirectUrl = '/cvatt.html?get=' + getURL;
+            var redirectUrl = '/mpd2.html?get=' + getURL;
         }
 
         if (getLang) {
