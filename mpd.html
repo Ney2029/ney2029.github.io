@@ -914,75 +914,88 @@ else if (getURL == "RXZlbnRvczFIRA")
 }
 
 	
-
-var start = getParameterByName('start');
-var autostart = start !== undefined && start === "true";
-
+var mpd = "//" + mt[random] +".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
 var mt = [ "edge-live01-mun", "edge-live02-mun", "edge-live11-hr", "edge-live12-hr", "edge-live13-hr", "edge-live14-hr", "edge-live15-hr", "edge-live16-hr", "edge-live17-hr", "edge-live31-hr", "edge-live32-hr", "edge-live34-hr", "edge-live11-sl", "edge-live12-sl", "edge-live13-sl", "edge-live15-sl", "edge-live17-sl", "edge-live31-sl", "edge-vod02-sl", "edge-vod04-sl", "edge-vod06-sl", "edge9-sl", "edge10-sl", "edge-vod01-hr", "edge-vod03-hr", "edge-vod04-hr", "edge1-ccast-sl", "edge2-ccast-sl", "edge6-ccast-sl", "edge-live01-cen", "edge-live03-cen", "edge-mix02-cte", "edge-vod01-cen", "edge-live01-cte", "edge-live01-coe", "edge-mix01-coe", "edge-mix02-coe", "edge-mix03-coe", "edge-mix04-coe", "edge-mix05-coe", "edge-mix01-ird", "edge-mix02-ird", "edge-mix01-mus",  "edge-mix03-mus"];
+var playerInstance = jwplayer("player");
 
-async function testSubdomains() {
-    for (let i = 0; i < mt.length; i++) {
-        let subdomain = mt[i];
-        let mpdURL = "//" + subdomain + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc_2A_wl/" + atob(getURL) + ".mpd";
-
-        try {
-            let status = await testMpdURL(mpdURL);
-            if (status === 200) {
-                console.log("MPD URL found:", mpdURL);
-                return mpdURL;
-            } else {
-                console.log("MPD URL", mpdURL, "returned status", status);
-            }
-        } catch (error) {
-            console.error("Error testing MPD URL", mpdURL, ":", error.message);
+function initializePlayer(autoplay) {
+  var random = Math.floor(Math.random() * mt.length);
+  playerInstance.setup({
+    playlist: [{
+      title : "",
+      description: "",
+      "sources": [
+        {
+          "default": false,
+          "type": "dash",
+          "file": mpd, 
+          "drm": {
+                    "clearkey": { "keyId": keyId, "key": key }
+          },
+          "label": "0"
         }
+      ]
+    }],
+    width: "100%",
+    height: "100%",
+    aspectratio: "16:9",
+    autostart: autoplay, 
+    cast: {},
+    sharing: {}
+  });
+}
+
+if (getLang == "") {
+  var lang = 1;
+} else {
+  var lang = parseInt(getLang); 
+}
+
+jwplayer().on('play', function(e) {
+  jwplayer().setCurrentAudioTrack(lang);
+});
+
+function tryInitialize() {
+  initializePlayer(false); 
+  playerInstance.on('error', function(e) {
+    if (e.code === 241401 || 241403) {
+
+      setTimeout(tryInitialize, 1000);
     }
-
-    throw new Error("No MPD URL found with status 200 OK");
+  });
 }
 
-function testMpdURL(url) {
-    return new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                resolve(xhr.status);
-            }
-        };
-        xhr.open("GET", url, true);
-        xhr.send();
-    });
+function checkAndInitialize(mtUrl) {
+  checkMtStatus(mtUrl, function(status) {
+    if (status === 200) {
+
+      initializePlayer(true);
+    } else {
+
+      setTimeout(function() {
+        random = Math.floor(Math.random() * mt.length);
+        checkAndInitialize(mt[random]);
+      }, 1000);
+    }
+  });
 }
 
-testSubdomains()
-    .then((bestMpdURL) => {
-        console.log("Best MPD URL:", bestMpdURL);
+function checkMtStatus(mtUrl, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        callback(200);
+      } else {
+        callback(xhr.status);
+      }
+    }
+  };
+  xhr.open('HEAD', mtUrl, true);
+  xhr.send();
+}
 
-        playerInstance.setup({
-            playlist: [{
-                "sources": [
-                    {
-                        "default": false,
-                        "type": "dash",
-                        "file": bestMpdURL,
-                        "drm": {
-                            "clearkey": { "keyId": keyId, "key": key }
-                        },
-                        "label": "0"
-                    }
-                ]
-            }],
-            width: "100%",
-            height: "100%",
-            aspectratio: "16:9",
-            autostart: autostart,
-            cast: {},
-            sharing: {}
-        });
-    })
-    .catch((error) => {
-        console.error("Error:", error.message);
-    });
+tryInitialize();
 
 
 	
