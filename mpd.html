@@ -914,15 +914,16 @@ else if (getURL == "RXZlbnRvczFIRA")
 }
 
 	
-var mpd = "//" + mt[random] +".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
 var mt = [ "edge-live01-mun", "edge-live02-mun", "edge-live11-hr", "edge-live12-hr", "edge-live13-hr", "edge-live14-hr", "edge-live15-hr", "edge-live16-hr", "edge-live17-hr", "edge-live31-hr", "edge-live32-hr", "edge-live34-hr", "edge-live11-sl", "edge-live12-sl", "edge-live13-sl", "edge-live15-sl", "edge-live17-sl", "edge-live31-sl", "edge-vod02-sl", "edge-vod04-sl", "edge-vod06-sl", "edge9-sl", "edge10-sl", "edge-vod01-hr", "edge-vod03-hr", "edge-vod04-hr", "edge1-ccast-sl", "edge2-ccast-sl", "edge6-ccast-sl", "edge-live01-cen", "edge-live03-cen", "edge-mix02-cte", "edge-vod01-cen", "edge-live01-cte", "edge-live01-coe", "edge-mix01-coe", "edge-mix02-coe", "edge-mix03-coe", "edge-mix04-coe", "edge-mix05-coe", "edge-mix01-ird", "edge-mix02-ird", "edge-mix01-mus",  "edge-mix03-mus"];
 var playerInstance = jwplayer("player");
 
 function initializePlayer(autoplay) {
   var random = Math.floor(Math.random() * mt.length);
+  var mpd = "//" + mt[random] + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
+
   playerInstance.setup({
     playlist: [{
-      title : "",
+      title: "",
       description: "",
       "sources": [
         {
@@ -945,7 +946,8 @@ function initializePlayer(autoplay) {
   });
 }
 
-if (getLang == "") {
+var getLang = getParameterByName('lang');
+if (getLang === null || getLang === "") {
   var lang = 1;
 } else {
   var lang = parseInt(getLang); 
@@ -958,24 +960,20 @@ jwplayer().on('play', function(e) {
 function tryInitialize() {
   initializePlayer(false); 
   playerInstance.on('error', function(e) {
-    if (e.code === 241401 || 241403) {
-
+    if (e.code === 241401 || e.code === 241403) {
       setTimeout(tryInitialize, 1000);
     }
   });
 }
 
-function checkAndInitialize(mtUrl) {
+function checkAndInitialize() {
+  var random = Math.floor(Math.random() * mt.length);
+  var mtUrl = "//" + mt[random] + ".cvattv.com.ar";
   checkMtStatus(mtUrl, function(status) {
     if (status === 200) {
-
       initializePlayer(true);
     } else {
-
-      setTimeout(function() {
-        random = Math.floor(Math.random() * mt.length);
-        checkAndInitialize(mt[random]);
-      }, 1000);
+      setTimeout(checkAndInitialize, 1000);
     }
   });
 }
@@ -984,11 +982,7 @@ function checkMtStatus(mtUrl, callback) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
-      if (xhr.status === 200) {
-        callback(200);
-      } else {
-        callback(xhr.status);
-      }
+      callback(xhr.status);
     }
   };
   xhr.open('HEAD', mtUrl, true);
@@ -997,47 +991,35 @@ function checkMtStatus(mtUrl, callback) {
 
 tryInitialize();
 
+if (typeof getURL !== 'undefined' && getURL !== null) {
+  var errorCount = sessionStorage.getItem('errorCount');
+  if (!errorCount) {
+    errorCount = 0;
+  } else {
+    errorCount = parseInt(errorCount);
+  }
 
-	
-if (getURL !== undefined && getURL !== null) {
-    
-    var errorCount = sessionStorage.getItem('errorCount');
-    if (!errorCount) {
-        errorCount = 0;
-    } else {
-        errorCount = parseInt(errorCount);
+  playerInstance.on("error", function() {
+    errorCount++;
+    var redirectUrl = '/mpd2.html?get=' + getURL;
+
+    if (getLang) {
+      redirectUrl += '&lang=' + getLang;
     }
 
-    playerInstance.on("error", function() {
-        errorCount++;
+    redirectUrl += '&start=true';
+    sessionStorage.setItem('errorCount', errorCount);
+    window.location = redirectUrl;
+  });
+}
 
-        if (errorCount >= 1) {
-            var redirectUrl = '/mpd2.html?get=' + getURL;
-        } else {
-            var redirectUrl = '/mpd2.html?get=' + getURL;
-        }
-
-        if (getLang) {
-            redirectUrl += '&lang=' + getLang;
-        }
-
-        redirectUrl += '&start=true';
-   
-        sessionStorage.setItem('errorCount', errorCount);
-
-        window.location = redirectUrl;
-    });
-}		
-var getLang = getParameterByName('lang');
-var selectedLanguage = getLang;
-var selectedLanguage2 = 1;  
+var selectedLanguage = getLang || 1;  
 var languageChangedDuringPlay = false;
 
 jwplayer().on('play', function(e) {
   if (!languageChangedDuringPlay) {
     var currentLanguage = jwplayer().getCurrentAudioTrack();
-
-    if (currentLanguage !== selectedLanguage && currentLanguage !== selectedLanguage2) {
+    if (currentLanguage !== selectedLanguage) {
       jwplayer().setCurrentAudioTrack(selectedLanguage);
       languageChangedDuringPlay = true;
     }
@@ -1048,8 +1030,10 @@ jwplayer().on('complete', function(e) {
   languageChangedDuringPlay = false;
 });
 
-
- 
+function getParameterByName(name) {
+  var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
 
 
 
