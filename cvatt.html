@@ -59,19 +59,12 @@ else if (getURL == "RVNQTjJfQXJn" || getURL == "Q2luZW1heA==" || getURL == "RXZl
 number = 6;
 else if (getURL == "QzlOX0M0")
 number = 5;
-else if (getURL == "RGlzY292ZXJ5SG9tZUhlYWx0aEhE" || getURL == "TmF0R2VvSEQ="  || getURL == "VE5UX0hEX0FyZw=="  || getURL == "VE5UU2VyaWVz" || getURL == "Q2FydG9vbk5ldHdvcms=" || getURL == "Tmlja2Vsb2Rlb24="  || getURL == "QWR1bHRfU3dpbQ==" ) 
+else if (getURL == "RGlzY292ZXJ5SG9tZUhlYWx0aEhE" || getURL == "TmF0R2VvSEQ="  || getURL == "VE5UX0hEX0FyZw=="  || getURL == "VE5UU2VyaWVz" || getURL == "Q2FydG9vbk5ldHdvcms=" || getURL == "Tmlja2Vsb2Rlb24="  || getURL == "QWR1bHRfU3dpbQ==" || getURL == "RXZlbnRvczFIRA") 
 number = 3;
 else if (getURL == "Q2FuYWxfNV9Sb3Nhcmlv" || getURL == "VEVMRUZVVFVST19DNA==" || getURL == "VGVsZWZlX05ldXF1ZW4=" || getURL == "VGVsZWZlX1NhbHRh" || getURL == "U05UX0M0" || getURL == "UEFSQVZJU0lPTl9DNA==" || getURL == "Tk9USUNJQVNfUFlfQzQ=" || getURL == "Tk9USUNJQVNfUFlfQzQ=" || getURL == "UEFSQVZJU0lPTl9DNA==" || getURL == "TEFfVEVMRV9DNA==" || getURL == "U1VSX1RWX0M0" || getURL == "Q2FuYWwxMlVSVQ=="  || getURL == "RGlzY292ZXJ5SG9tZUhlYWx0aEhE" || getURL == "Q2FuYWw0X1VSVQ==" || getURL == "SEJPSEQ="  || getURL == "Q2FuYWwxMF9VUlU=" || getURL == "UlBDX0M0")
 number = 4;
 else
 number = 3;
-
-	
-	var mt = [ "edge-live01-mun", "edge-live02-mun", "edge-live11-hr", "edge-live12-hr", "edge-live13-hr", "edge-live14-hr", "edge-live15-hr", "edge-live16-hr", "edge-live17-hr", "edge-live31-hr", "edge-live32-hr", "edge-live34-hr", "edge-live11-sl", "edge-live12-sl", "edge-live13-sl", "edge-live15-sl", "edge-live17-sl", "edge-live31-sl", "edge-vod02-sl", "edge-vod04-sl", "edge-vod06-sl", "edge9-sl", "edge10-sl", "edge-vod01-hr", "edge-vod03-hr", "edge-vod04-hr", "edge1-ccast-sl", "edge2-ccast-sl", "edge6-ccast-sl", "edge-live01-cen", "edge-live03-cen", "edge-mix02-cte", "edge-vod01-cen", "edge-live01-cte", "edge-live01-coe", "edge-mix01-coe", "edge-mix02-coe", "edge-mix03-coe", "edge-mix04-coe", "edge-mix05-coe", "edge-mix01-ird", "edge-mix02-ird", "edge-mix01-mus",  "edge-mix03-mus"];
-
-	
-var random = Math.floor(Math.random() * mt.length)	
-console.log("Selected mt:", mt[random]);
 	
 async function testSubdomains() {
   for (let i = 0; i < mt.length; i++) {
@@ -104,11 +97,7 @@ function testMpdURL(url) {
   });
 }
 testSubdomains();
-
 	
-var mpd = "//" + mt[random] +".cvattv.com.ar/live/c"+number+"eds/"+atob(getURL)+"/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
-
-var mpd2 = "//" + mt[random] +".cvattv.com.ar/live/c3eds/Eventos1HD/SA_Live_dash_enc/Eventos1HD.mpd";
 if (getURL == "RVNQTjJIRA")
 {
 	keyId = "e884b711ab111beb8a7ba1e7bcbdc9bf";
@@ -958,96 +947,114 @@ else if (getURL == "RXZlbnRvczFIRA")
         keyId = "5c86e237317c2231ac1bc130e995fad6";
         key = "dcacf7b239ee03df3c69ca11dbcde4eb";
 }
-if (getURL == "RXZlbnRvczFIRA")
-{
-	playerInstance.setup({
-		"type": "dash",
-		"file": mpd2,
-		"drm": {
-                            "clearkey": {
-                                "keyId": "5c86e237317c2231ac1bc130e995fad6",
-                                "key": "dcacf7b239ee03df3c69ca11dbcde4eb"
-                            }
-                        },
-		width: "100%",
-		height: "100%",
-		aspectratio: "16:9",
-		autostart: false,
-		cast: {},
-		sharing: {}
-	});
-}
 	
 
-else
-{
+var mt = [ "edge-live01-mun", "edge-live02-mun", "edge-live11-hr", "edge-live12-hr", "edge-live13-hr", "edge-live14-hr", "edge-live15-hr", "edge-live16-hr", "edge-live17-hr", "edge-live31-hr", "edge-live32-hr", "edge-live34-hr", "edge-live11-sl", "edge-live12-sl", "edge-live13-sl", "edge-live15-sl", "edge-live17-sl", "edge-live31-sl", "edge-vod02-sl", "edge-vod04-sl", "edge-vod06-sl", "edge9-sl", "edge10-sl", "edge-vod01-hr", "edge-vod03-hr", "edge-vod04-hr", "edge1-ccast-sl", "edge2-ccast-sl", "edge6-ccast-sl", "edge-live01-cen", "edge-live03-cen", "edge-mix02-cte", "edge-vod01-cen", "edge-live01-cte", "edge-live01-coe", "edge-mix01-coe", "edge-mix02-coe", "edge-mix03-coe", "edge-mix04-coe", "edge-mix05-coe", "edge-mix01-ird", "edge-mix02-ird", "edge-mix01-mus",  "edge-mix03-mus"];
+var playerInstance = jwplayer("player");
 
-var start = getParameterByName('start');
-var autostart = start !== undefined && start === "true";
+function initializePlayer(autoplay) {
+  var random = Math.floor(Math.random() * mt.length);
+  var mpd = "//" + mt[random] + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
 
-playerInstance.setup({
+  playerInstance.setup({
     playlist: [{
-        "sources": [
-            {
-                "default": false,
-                "type": "dash",
-                "file": mpd,
-                "drm": {
+      title: "",
+      description: "",
+      "sources": [
+        {
+          "default": false,
+          "type": "dash",
+          "file": mpd, 
+          "drm": {
                     "clearkey": { "keyId": keyId, "key": key }
-                },
-                "label": "0"
-            }
-        ]
+          },
+          "label": "0"
+        }
+      ]
     }],
     width: "100%",
     height: "100%",
     aspectratio: "16:9",
-    autostart: autostart,
+    autostart: autoplay, 
     cast: {},
     sharing: {}
+  });
+}
+
+var getLang = getParameterByName('lang');
+if (getLang === null || getLang === "") {
+  var lang = 1;
+} else {
+  var lang = parseInt(getLang); 
+}
+
+jwplayer().on('play', function(e) {
+  jwplayer().setCurrentAudioTrack(lang);
 });
 
-	
-if (getURL !== undefined && getURL !== null) {
-    
-    var errorCount = sessionStorage.getItem('errorCount');
-    if (!errorCount) {
-        errorCount = 0;
+function tryInitialize() {
+  initializePlayer(false); 
+  playerInstance.on('error', function(e) {
+    if (e.code === 241401 || e.code === 241403) {
+      setTimeout(tryInitialize, 1000);
+    }
+  });
+}
+
+function checkAndInitialize() {
+  var random = Math.floor(Math.random() * mt.length);
+  var mtUrl = "//" + mt[random] + ".cvattv.com.ar";
+  checkMtStatus(mtUrl, function(status) {
+    if (status === 200) {
+      initializePlayer(true);
     } else {
-        errorCount = parseInt(errorCount);
+      setTimeout(checkAndInitialize, 1000);
+    }
+  });
+}
+
+function checkMtStatus(mtUrl, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4) {
+      callback(xhr.status);
+    }
+  };
+  xhr.open('HEAD', mtUrl, true);
+  xhr.send();
+}
+
+tryInitialize();
+
+if (typeof getURL !== 'undefined' && getURL !== null) {
+  var errorCount = sessionStorage.getItem('errorCount');
+  if (!errorCount) {
+    errorCount = 0;
+  } else {
+    errorCount = parseInt(errorCount);
+  }
+
+  playerInstance.on("error", function() {
+    errorCount++;
+    var redirectUrl = '/mpd2.html?get=' + getURL;
+
+    if (getLang) {
+      redirectUrl += '&lang=' + getLang;
     }
 
-    playerInstance.on("error", function() {
-        errorCount++;
-
-        if (errorCount >= 1) {
-            var redirectUrl = '/mpd.html?get=' + getURL;
-        } else {
-            var redirectUrl = '/cvatt.html?get=' + getURL;
-        }
-
-        if (getLang) {
-            redirectUrl += '&lang=' + getLang;
-        }
-
-        redirectUrl += '&start=true';
-   
-        sessionStorage.setItem('errorCount', errorCount);
-
-        window.location = redirectUrl;
-    });
+    redirectUrl += '&start=true';
+    sessionStorage.setItem('errorCount', errorCount);
+    window.location = redirectUrl;
+  });
 }
-}		
-var getLang = getParameterByName('lang');
-var selectedLanguage = getLang;
-var selectedLanguage2 = 1;  
+
+var selectedLanguage = getLang || 1;  
 var languageChangedDuringPlay = false;
 
 jwplayer().on('play', function(e) {
   if (!languageChangedDuringPlay) {
     var currentLanguage = jwplayer().getCurrentAudioTrack();
-
-    if (currentLanguage !== selectedLanguage && currentLanguage !== selectedLanguage2) {
+    if (currentLanguage !== selectedLanguage) {
       jwplayer().setCurrentAudioTrack(selectedLanguage);
       languageChangedDuringPlay = true;
     }
@@ -1058,7 +1065,10 @@ jwplayer().on('complete', function(e) {
   languageChangedDuringPlay = false;
 });
 
-
+function getParameterByName(name) {
+  var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
  
 
 
