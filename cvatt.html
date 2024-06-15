@@ -1036,7 +1036,7 @@ if (typeof getURL !== 'undefined' && getURL !== null) {
 
   playerInstance.on("error", function() {
     errorCount++;
-    var redirectUrl = '/mpd2.html?get=' + getURL;
+    var redirectUrl = '/mpd.html?get=' + getURL;
 
     if (getLang) {
       redirectUrl += '&lang=' + getLang;
