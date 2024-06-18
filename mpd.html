@@ -920,7 +920,7 @@ var playerInstance = jwplayer("player");
 // Function to initialize the player
 function initializePlayer(autoplay) {
   var random = Math.floor(Math.random() * mt.length);
-  var mpd = "//" + mt[random] + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc_2A_wl/" + atob(getURL) + ".mpd";
+  var mpd = "//" + mt[random] + ".cvattv.com.ar/live/c" + number + "eds/" + atob(getURL) + "/SA_Live_dash_enc/" + atob(getURL) + ".mpd";
 
   playerInstance.setup({
     playlist: [{
@@ -953,12 +953,19 @@ function getParameterByName(name) {
   return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
 
+var getURL = getParameterByName('get');
 var getLang = getParameterByName('lang');
+var start = getParameterByName('start');
+
 var lang = (getLang === null || getLang === "") ? 1 : parseInt(getLang);
+var autoplay = (start === 'true');
+
+var selectedLanguage = lang;
+var languageChangedDuringPlay = false;
 
 // Function to retry initialization in case of an error
 function tryInitialize() {
-  initializePlayer(false);
+  initializePlayer(autoplay);
   playerInstance.on('error', function(e) {
     if (e.code === 241401 || e.code === 241403) {
       setTimeout(tryInitialize, 1000);
@@ -972,7 +979,7 @@ function checkAndInitialize() {
   var mtUrl = "//" + mt[random] + ".cvattv.com.ar";
   checkMtStatus(mtUrl, function(status) {
     if (status === 200) {
-      initializePlayer(true);
+      tryInitialize();
     } else {
       setTimeout(checkAndInitialize, 1000);
     }
@@ -992,7 +999,7 @@ function checkMtStatus(mtUrl, callback) {
 }
 
 // Initial player setup
-tryInitialize();
+checkAndInitialize();
 
 if (typeof getURL !== 'undefined' && getURL !== null) {
   var errorCount = sessionStorage.getItem('errorCount') || 0;
@@ -1009,9 +1016,6 @@ if (typeof getURL !== 'undefined' && getURL !== null) {
     window.location = redirectUrl;
   });
 }
-
-var selectedLanguage = lang;  
-var languageChangedDuringPlay = false;
 
 jwplayer().on('play', function() {
   if (!languageChangedDuringPlay) {
